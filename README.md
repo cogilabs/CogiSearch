@@ -14,6 +14,8 @@
     <a href="#adding-to-your-browser"><img alt="Add to Browser" title="Setup Instructions" src="https://img.shields.io/badge/Add_to-Your_Browser-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
 </p>
 
+[→ En Français](/localizedReadme/README-fr.md)  
+
 ## Table of Contents
 
 - [Introduction](#introduction)
