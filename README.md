@@ -1,6 +1,6 @@
 # CogiSearch
 
-<p align="center"><img alt="CogiSearch Logo" title="CogiSearch" src="/cogiSearch.svg"></p>
+<p align="center"><img alt="CogiSearch Logo" title="CogiSearch" src="https://raw.githubusercontent.com/cogilabs/CogiSearch/main/cogiSearch.svg"></p>
 
 <p align="center">
     <img alt="HTML5" title="Built with HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
@@ -50,16 +50,52 @@ A "bang" is a special shortcut that redirects your search to a specific search e
 
 ### Popular Bangs
 
-| Bang     | Search Engine | Example                        |
-|----------|---------------|--------------------------------|
-| `!g`     | Google        | `!g best programming language` |
-| `!b`     | Bing          | `!b vacation ideas`            |
-| `!y`     | Yahoo         | `!y weather forecast`          |
-| `!qw`    | Qwant         | `!qw privacy tools`            |
-| `!brave` | Brave Search  | `!brave secure messaging`      |
-| `!w`     | Wikipedia     | `!w neural networks`           |
-| `!yt`    | YouTube       | `!yt cooking tutorials`        |
-| `!w`     | Wikipedia     | `!w the Backrooms`             |
+<table>
+    <thead>
+        <tr>
+            <th>Bang</th>
+            <th>Search Engine</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>!g</code></td>
+            <td>Google</td>
+            <td><code>!g best programming language</code></td>
+        </tr>
+        <tr>
+            <td><code>!b</code></td>
+            <td>Bing</td>
+            <td><code>!b vacation ideas</code></td>
+        </tr>
+        <tr>
+            <td><code>!y</code></td>
+            <td>Yahoo</td>
+            <td><code>!y weather forecast</code></td>
+        </tr>
+        <tr>
+            <td><code>!qw</code></td>
+            <td>Qwant</td>
+            <td><code>!qw privacy tools</code></td>
+        </tr>
+        <tr>
+            <td><code>!brave</code></td>
+            <td>Brave Search</td>
+            <td><code>!brave secure messaging</code></td>
+        </tr>
+        <tr>
+            <td><code>!w</code></td>
+            <td>Wikipedia</td>
+            <td><code>!w neural networks</code></td>
+        </tr>
+        <tr>
+            <td><code>!yt</code></td>
+            <td>YouTube</td>
+            <td><code>!yt cooking tutorials</code></td>
+        </tr>
+    </tbody>
+</table>
 
 ### Setting Your Default Search Engine
 
