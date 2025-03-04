@@ -14,6 +14,8 @@
     <a href="#ajouter-à-votre-navigateur"><img alt="Ajouter au Navigateur" title="Instructions d'installation" src="https://img.shields.io/badge/Ajouter_à-Votre_Navigateur-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
 </p>
 
+[→ In English](/README.md)  
+
 ## Table des matières
 
 - [Introduction](#introduction)
