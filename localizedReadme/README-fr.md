@@ -1,6 +1,6 @@
 # CogiSearch
 
-<p align="center"><img alt="Logo CogiSearch" title="CogiSearch" src="/cogiSearch.svg"></p>
+<p align="center"><img alt="Logo CogiSearch" title="CogiSearch" src="https://raw.githubusercontent.com/cogilabs/CogiSearch/main/cogiSearch.svg"></p>
 
 <p align="center">
     <img alt="HTML5" title="Conçu avec HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
@@ -50,16 +50,57 @@ Un "bang" est un raccourci spécial qui redirige votre recherche vers un moteur 
 
 ### Bangs populaires
 
-| Bang     | Moteur de recherche | Exemple                                |
-|----------|---------------------|----------------------------------------|
-| `!g`     | Google              | `!g meilleur langage de programmation` |
-| `!b`     | Bing                | `!b idées de vacances`                 |
-| `!y`     | Yahoo               | `!y prévisions météo`                  |
-| `!qw`    | Qwant               | `!qw outils de confidentialité`        |
-| `!brave` | Brave Search        | `!brave messagerie sécurisée`          |
-| `!w`     | Wikipédia           | `!w réseaux de neurones`               |
-| `!yt`    | YouTube             | `!yt tutoriels cuisine`                |
-| `!w`     | Wikipédia           | `!w les Backrooms`                     |
+<table>
+    <thead>
+        <tr>
+            <th>Bang</th>
+            <th>Moteur de recherche</th>
+            <th>Exemple</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>!g</code></td>
+            <td>Google</td>
+            <td><code>!g meilleur langage de programmation</code></td>
+        </tr>
+        <tr>
+            <td><code>!b</code></td>
+            <td>Bing</td>
+            <td><code>!b idées de vacances</code></td>
+        </tr>
+        <tr>
+            <td><code>!y</code></td>
+            <td>Yahoo</td>
+            <td><code>!y prévisions météo</code></td>
+        </tr>
+        <tr>
+            <td><code>!qw</code></td>
+            <td>Qwant</td>
+            <td><code>!qw outils de confidentialité</code></td>
+        </tr>
+        <tr>
+            <td><code>!brave</code></td>
+            <td>Brave Search</td>
+            <td><code>!brave messagerie sécurisée</code></td>
+        </tr>
+        <tr>
+            <td><code>!w</code></td>
+            <td>Wikipédia</td>
+            <td><code>!w réseaux de neurones</code></td>
+        </tr>
+        <tr>
+            <td><code>!yt</code></td>
+            <td>YouTube</td>
+            <td><code>!yt tutoriels cuisine</code></td>
+        </tr>
+        <tr>
+            <td><code>!w</code></td>
+            <td>Wikipédia</td>
+            <td><code>!w les Backrooms</code></td>
+        </tr>
+    </tbody>
+</table>
 
 ### Définir votre moteur de recherche par défaut
 
