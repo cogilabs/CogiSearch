@@ -16,5 +16,14 @@ const customBangs = [
     "sc": "Tools",
     "t": "wtc",
     "u": "https://support.watteco.com/?s={{{s}}}"
+  },
+  {
+    "c":"Online Services",
+    "d":"www.google.com",
+    "r": 0,
+    "s":"Google Web Tab",
+    "sc":"Google",
+    "t": "gweb",
+    "u": "https://www.google.com/search?udm=14&q={{{s}}}"
   }
 ];
