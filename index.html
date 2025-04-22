@@ -1,447 +1,758 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CogiSearch</title>
   <link rel="shortcut icon" href="https://Cogilabs.eu/Images/Cogilabs-favicon.svg">
   <script src="customBangs.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-        :root {
-        /* Light theme (default) */
-        --background-color: #ebefff;
-        --text-color: #333;
-        --secondary-text-color: #555;
-        --input-background: #fff;
-        --button-background: #f0f0f0;
-        --button-hover-background: #e0e0e0;
-        --button-text-color: #333;
-        --border-color: #ccc;
-        --footer-background: #333;
-        --footer-text-color: #fff;
-        --footer-link-hover: #9cd1ff;
-        --card-background: #fff;
-        --card-shadow: rgba(0,0,0,0.05);
-        --card-hover-shadow: rgba(0,0,0,0.1);
-        --accent-color: #3366cc;
-        --accent-background: #f5f8ff;
-        --notification-background: #333;
-        --notification-text-color: white;
-      }
+    :root {
+      /* Light theme (default) */
+      --background-color: #f8f9fa;
+      --card-background: #ffffff;
+      --text-color: #212529;
+      --secondary-text-color: #6c757d;
+      --accent-color: #4361ee;
+      --accent-hover: #3a56d4;
+      --input-background: #ffffff;
+      --input-border: #dee2e6;
+      --input-focus-border: #4361ee;
+      --button-background: #4361ee;
+      --button-text-color: #ffffff;
+      --button-hover-background: #3a56d4;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --border-color: #e9ecef;
+      --footer-background: #212529;
+      --footer-text-color: #f8f9fa;
+      --footer-link-color: #4361ee;
+      --footer-link-hover: #90a5ff;
+      --notification-background: rgba(0, 0, 0, 0.8);
+      --notification-text-color: white;
+      --bang-tag-background: #e7f0ff;
+      --bang-tag-color: #4361ee;
+      --section-divider: #e9ecef;
+      --toggle-background: #e9ecef;
+      --toggle-button: #ffffff;
+    }
 
-      [data-theme="dark"] {
-        --background-color: #1a1a2e;
-        --text-color: #e6e6e6;
-        --secondary-text-color: #bbb;
-        --input-background: #2c2c44;
-        --button-background: #3a3a5c;
-        --button-hover-background: #4a4a6c;
-        --button-text-color: #fff;
-        --border-color: #444;
-        --footer-background: #0f0f1a;
-        --footer-text-color: #ddd;
-        --footer-link-hover: #66b0ff;
-        --card-background: #252542;
-        --card-shadow: rgba(0,0,0,0.2);
-        --card-hover-shadow: rgba(0,0,0,0.3);
-        --accent-color: #6699ff;
-        --accent-background: #2a355a;
-        --notification-background: #4a4a6c;
-        --notification-text-color: white;
-      }
+    [data-theme="dark"] {
+      --background-color: #121212;
+      --card-background: #1e1e1e;
+      --text-color: #e0e0e0;
+      --secondary-text-color: #aaaaaa;
+      --accent-color: #738aff;
+      --accent-hover: #90a5ff;
+      --input-background: #2d2d2d;
+      --input-border: #3d3d3d;
+      --input-focus-border: #738aff;
+      --button-background: #738aff;
+      --button-text-color: #121212;
+      --button-hover-background: #90a5ff;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+      --border-color: #333333;
+      --footer-background: #000000;
+      --footer-text-color: #e0e0e0;
+      --footer-link-color: #738aff;
+      --footer-link-hover: #90a5ff;
+      --notification-background: rgba(255, 255, 255, 0.8);
+      --notification-text-color: black;
+      --bang-tag-background: #2a3052;
+      --bang-tag-color: #738aff;
+      --section-divider: #333333;
+      --toggle-background: #555555;
+      --toggle-button: #ffffff;
+    }
 
-      body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      a {
-        color: var(--accent-color);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        border-bottom: 1px solid transparent;
-      }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
 
-      a:hover, a:focus {
-        color: var(--accent-color);
-        border-bottom: 1px solid var(--accent-color);
-      }
+    .landing-page {
+      display: none;
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-      .about-container a {
-        font-weight: 500;
-      }
+    .search-container {
+      margin: 2rem auto 3rem;
+      text-align: center;
+    }
 
-      .footer a {
-        color: var(--footer-text-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-        border-bottom: none;
-      }
+    .logo-container {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
 
-      .footer a:hover {
-        color: var(--footer-link-hover);
-        border-bottom: none;
-      }
+    .logo {
+      max-width: 450px;
+      height: auto;
+    }
 
+    .search-form {
+      display: flex;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: var(--card-shadow);
+      border-radius: 50px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .search-form:focus-within {
+      box-shadow: var(--card-hover-shadow);
+      transform: translateY(-2px);
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--input-border);
+      border-right: none;
+      border-radius: 50px 0 0 50px;
+      background-color: var(--input-background);
+      color: var(--text-color);
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--input-focus-border);
+    }
+
+    .search-button {
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      border: none;
+      background-color: var(--button-background);
+      color: var(--button-text-color);
+      cursor: pointer;
+      border-radius: 0 50px 50px 0;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .search-button:hover {
+      background-color: var(--button-hover-background);
+    }
+
+    .add-to-browser {
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--secondary-text-color);
+    }
+
+    .clickToCopy {
+      cursor: pointer;
+      font-weight: 600;
+      background-color: var(--bang-tag-background);
+      color: var(--bang-tag-color);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      border: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .clickToCopy:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .emphase {
+      font-weight: 600;
+      background-color: var(--bang-tag-background);
+      color: var(--bang-tag-color);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-title .icon {
+      font-size: 1.3rem;
+      color: var(--accent-color);
+    }
+
+    .about-container p {
+      margin-bottom: 1rem;
+    }
+
+    .about-container a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .about-container a:hover {
+      color: var(--accent-hover);
+      border-bottom: 1px solid var(--accent-hover);
+    }
+
+    .default-engine-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .setting-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .setting-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .default-engine-select {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid var(--input-border);
+      border-radius: 8px;
+      background-color: var(--input-background);
+      color: var(--text-color);
+      outline: none;
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .default-engine-select:focus {
+      border-color: var(--input-focus-border);
+    }
+
+    .custom-bang-container, .custom-engine-container {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .bang-prefix {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      color: var(--bang-tag-color);
+    }
+
+    .custom-bang-input, .custom-engine-input {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid var(--input-border);
+      border-radius: 8px;
+      background-color: var(--input-background);
+      color: var(--text-color);
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .custom-bang-input:focus, .custom-engine-input:focus {
+      border-color: var (--input-focus-border);
+    }
+
+    .custom-bang-button, .custom-engine-button {
+      margin-left: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      background-color: var(--button-background);
+      color: var(--button-text-color);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .custom-bang-button:hover, .custom-engine-button:hover {
+      background-color: var(--button-hover-background);
+    }
+
+    .current-default {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--bang-tag-background);
+      color: var(--bang-tag-color);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle-container {
+      margin-top: 1rem;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .theme-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .theme-slider {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      background-color: var(--toggle-background);
+      border-radius: 34px;
+      transition: .4s;
+      margin-right: 0.75rem;
+    }
+
+    .theme-slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--toggle-button);
+      border-radius: 50%;
+      transition: .4s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    input:checked + .theme-slider {
+      background-color: var(--accent-color);
+    }
+
+    input:checked + .theme-slider:before {
+      transform: translateX(30px);
+    }
+
+    .theme-label {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .custom-bangs-toggle {
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-color);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 1.5rem 0 0.5rem;
+      padding: 0.5rem 0;
+    }
+
+    .custom-bangs-toggle span {
+      transition: transform 0.3s ease;
+    }
+
+    .custom-bangs-toggle.active span {
+      transform: rotate(180deg);
+    }
+
+    .custom-bangs-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+      gap: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      width: 100%;
+    }
+
+    .custom-bangs-list.show {
+      max-height: 500px;
+      padding-top: 0.75rem;
+      overflow-y: auto;
+    }
+
+    .bang-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .bang-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+    }
+
+    .bang-shortcut {
+      font-weight: bold;
+      background-color: var(--bang-tag-background);
+      color: var(--bang-tag-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .bang-name {
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .copy-notification {
+      font-family: 'Inter', sans-serif;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--notification-background);
+      color: var(--notification-text-color);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      font-weight: 500;
+      z-index: 1000;
+    }
+
+    .copy-notification.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .footer {
+      background-color: var(--footer-background);
+      color: var(--footer-text-color);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 900;
+    }
+
+    .footer-content {
+      flex: 1;
+      text-align: center;
+    }
+
+    .footer-spacer {
+      width: 80px;
+    }
+
+    .footer-logo {
+      height: 30px;
+      max-width: 120px;
+      object-fit: contain;
+    }
+
+    .footer a {
+      color: var(--footer-text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: var(--footer-link-hover);
+    }
+
+    @media (max-width: 768px) {
       .landing-page {
-        display: none;
-        text-align: center;
-        padding-top: 60px;
-        font-family: Arial, sans-serif;
-        flex: 1;
+        padding: 1.5rem;
+      }
+
+      .logo {
+        max-width: 300px;
       }
 
       .search-form {
-        margin: 20px auto;
+        flex-direction: column;
+        border-radius: 12px;
       }
 
       .search-input {
-        padding: 10px;
-        width: 300px;
-        font-size: 16px;
-        background-color: var(--input-background);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
+        border-right: 2px solid var(--input-border);
+        border-radius: 12px;
+        border-bottom: none;
       }
 
       .search-button {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin-left: 10px;
-        cursor: pointer;
-        background-color: var(--button-background);
-        color: var(--button-text-color);
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
-      }
-
-      .clickToCopy {
-        cursor: pointer;
-        font-weight: bold;
-        border: 1px solid var(--border-color);
-        padding: 2px 4px;
-        border-radius: 4px;
-      }
-
-      .add-to-browser {
-        padding-bottom: 15px;
-      }
-
-      .clickToCopy:hover {
-        background-color: var(--button-hover-background);
-      }
-
-      .copy-notification {
-        font-family: Arial, sans-serif;
-        position: fixed;
-        top: 20px;
-        right: 10px;
-        background-color: var(--notification-background);
-        color: var(--notification-text-color);
-        padding: 10px 20px;
-        border-radius: 4px;
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-      }
-
-      .copy-notification.show {
-        display: block;
-        opacity: 1;
-      }
-
-      .default-engine-container {
-        margin: 20px auto;
-        max-width: 600px;
-      }
-
-      .default-engine-select {
-        padding: 8px;
-        font-size: 14px;
-        min-width: 200px;
-        background-color: var(--input-background);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
-      }
-
-      .settings-container, .about-container {
-        margin-top: 30px;
-        padding: 15px;
-        border-top: 1px solid var(--border-color);
+        border-radius: 12px;
       }
 
       .custom-bang-container {
-        margin-top: 15px;
-      }
-
-      .custom-bang-input {
-        padding: 8px;
-        font-size: 14px;
-        width: 100px;
-        background-color: var(--input-background);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .custom-bang-button {
-        padding: 8px 15px;
-        font-size: 14px;
-        margin-left: 5px;
-        background-color: var(--button-background);
-        color: var(--button-text-color);
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
-      }
-
-      .bang-prefix {
-        font-size: 16px;
-        margin-right: 3px;
-      }
-
-      .current-default {
-        margin-top: 10px;
-        font-style: italic;
-        color: var(--secondary-text-color);
-      }
-
-      .custom-bangs-toggle {
-        display: inline-flex;
-        align-items: center;
-        background: var(--button-background);
-        border: none;
-        border-radius: 20px;
-        padding: 6px 16px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.2s ease;
-        color: var(--button-text-color);
-        margin: 10px 0;
-      }
-
-      .custom-bangs-toggle:hover {
-        background: var(--button-hover-background);
-        transform: translateY(-1px);
-      }
-
-      .custom-bangs-toggle span {
-        margin-left: 5px;
-        transition: transform 0.3s ease;
-      }
-
-      .custom-bangs-toggle.active span {
-        transform: rotate(180deg);
-      }
-
-      .custom-bangs-list {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
+        margin-left: 0;
+        margin-top: 0.75rem;
         width: 100%;
-        margin: 0 auto;
-      }
-
-      .custom-bangs-list.show {
-        max-height: 500px;
-        overflow-y: auto;
-        padding: 15px 0;
-      }
-
-      .bang-item {
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-        background: var(--card-background);
-        border-radius: 8px;
-        box-shadow: 0 2px 5px var(--card-shadow);
-        transition: all 0.2s ease;
-      }
-
-      .bang-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px var(--card-hover-shadow);
-      }
-
-      .bang-shortcut {
-        font-weight: bold;
-        color: var(--accent-color);
-        margin-right: 10px;
-        background: var(--accent-background);
-        border-radius: 4px;
-        padding: 2px 6px;
-        border: unset;
-      }
-
-      .bang-name {
-        font-size: 14px;
-        color: var(--text-color);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
 
       .footer {
-        background-color: var(--footer-background);
-        color: var(--footer-text-color);
-        padding: 5px 20px;
-        display: flex;
-        align-items: center;
-        margin-top: auto;
-        font-family: Arial, sans-serif;
-        position: sticky;
-        width: -moz-available;
-        width: -webkit-fill-available;
-        bottom: 0;
+        flex-direction: column;
+        gap: 1rem;
       }
 
       .footer-spacer {
-        width: 80px;
+        display: none;
       }
+    }
 
-      .footer-content {
-        flex: 1;
-        text-align: center;
-      }
+    .or-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1rem 0;
+    }
 
-      .footer-logo {
-        height: 30px;
-      }
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
 
-      .theme-toggle-container {
-        margin-bottom: 25px;
-        max-width: 600px;
-        margin: 0 auto 25px auto;
-      }
+    .or-divider-text {
+      padding: 0 1rem;
+      color: var(--secondary-text-color);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
 
-      .theme-toggle {
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-      }
+    .option-selector {
+      margin-bottom: 1rem;
+    }
 
-      .theme-toggle input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
+    .option-selector label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
 
-      .theme-slider {
-        position: relative;
-        display: inline-block;
-        width: 50px;
-        height: 24px;
-        background-color: var(--border-color);
-        border-radius: 34px;
-        transition: .4s;
-        margin-right: 10px;
-      }
+    .option-selector input[type="radio"] {
+      margin-right: 0.5rem;
+    }
 
-      .theme-slider:before {
-        position: absolute;
-        content: "";
-        height: 18px;
-        width: 18px;
-        left: 3px;
-        bottom: 3px;
-        background-color: var(--input-background);
-        border-radius: 50%;
-        transition: .4s;
-      }
+    .option-content {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+    }
 
-      input:checked + .theme-slider {
-        background-color: var(--accent-color);
-      }
+    .option-content.hidden {
+      display: none;
+    }
 
-      input:checked + .theme-slider:before {
-        transform: translateX(26px);
-      }
+    .setting-section {
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
 
-      .theme-label {
-        font-size: 16px;
-      }
+    .setting-section-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
-  <div class="landing-page">
-    <img src="cogiSearch.svg" alt="CogiSearch" style="max-width: 800px;">
-    <form class="search-form" onsubmit="handleSearch(event)">
-      <input type="text" class="search-input" placeholder="Enter your search query..." id="searchInput">
-      <button type="submit" class="search-button">Search</button>
-    </form>
-    <p class="add-to-browser">Use <span class="clickToCopy">https://search.cogilabs.eu/?q=%s</span> to add CogiSearch to your browser and use it in your adress bar.</p>
+  <div class="landing-page" role="main">
+    <div class="search-container">
+      <div class="logo-container">
+        <img src="cogiSearch.svg" alt="CogiSearch" class="logo">
+      </div>
 
-    <div class="about-container">
-      <h3>About</h3>
-      <p>CogiSearch is a search router that allows you to use the idea of <i>bangs</i> from the <a href="https://duckduckgo.com/">DuckDuckGo</a> search engine, except it's faster and allows you to set your default search engine.</p>
-      <p>To use a bang, simply type <span class="clickToCopy">!&lt;bang&gt;</span> in your search query, where <span class="clickToCopy">&lt;bang&gt;</span> is the name of the bang you want to use. For example, to search on Google, type <span class="clickToCopy">!g</span>.</p>
-      <p>You can set your default search engine (the one used when you don't type a bang) in the settings below.</p>
-      <p>All the bangs from DuckDuckGo are available, plus some extra ones that I've added.</p>
-      <button class="custom-bangs-toggle">
-        Show Custom Bangs <span>▼</span>
-      </button>
-      <div class="custom-bangs-list">
-        <!-- Will be populated dynamically -->
+      <form class="search-form" onsubmit="handleSearch(event)" aria-label="Search form">
+        <input type="text" class="search-input" placeholder="Search the web..." id="searchInput" autofocus aria-label="Search input">
+        <button type="submit" class="search-button" aria-label="Submit search">Search</button>
+      </form>
+
+      <p class="add-to-browser">Add to your browser: <span class="clickToCopy" role="button" tabindex="0" aria-label="Click to copy search URL">https://search.cogilabs.eu/?q=%s</span></p>
+    </div>
+
+    <div class="main-content">
+      <div class="card about-container" role="region" aria-labelledby="about-title">
+        <h2 class="card-title" id="about-title">
+          <span class="icon" aria-hidden="true">ℹ️</span> About CogiSearch
+        </h2>
+        <p>CogiSearch is a search router inspired by <a href="https://duckduckgo.com/bang/" target="_blank">DuckDuckGo's bang feature</a>. It's faster and lets you set your preferred default search engine.</p>
+        <p>To use a bang, simply type <span class="emphase">!&lt;bang&gt;</span> in your search query. For example, search on Google with <span class="emphase">!g</span>.</p>
+        <p>All DuckDuckGo bangs are available, plus custom ones specifically added for CogiSearch.</p>
+
+        <button class="custom-bangs-toggle" aria-expanded="false" aria-controls="custom-bangs-list">
+          View Available Custom Bangs <span aria-hidden="true">▼</span>
+        </button>
+        <div class="custom-bangs-list" id="custom-bangs-list">
+          <!-- Will be populated dynamically -->
+        </div>
+      </div>
+
+      <div class="card settings-container" role="region" aria-labelledby="settings-title">
+        <h2 class="card-title" id="settings-title">
+          <span class="icon" aria-hidden="true">⚙️</span> Settings
+        </h2>
+
+        <div class="default-engine-container setting-group" role="region" aria-labelledby="default-engine-title">
+          <h3 id="default-engine-title">Default Search Engine</h3>
+          <p class="setting-description">Choose which search engine to use when no bang is specified</p>
+
+          <div class="setting-section">
+            <div class="option-selector">
+              <label>
+                <input type="radio" name="engineChoice" checked id="popularEngineChoice" aria-describedby="popular-engine-description">
+                <span id="popular-engine-description">Choose from popular engines</span>
+              </label>
+
+              <div class="option-content" id="popularEngineContent">
+                <select id="defaultEngine" class="default-engine-select" onchange="saveDefaultEngine('select')" aria-label="Select default search engine">
+                  <option value="">DuckDuckGo (default)</option>
+                  <!-- Will be populated dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <div class="option-selector">
+              <label>
+                <input type="radio" name="engineChoice" id="customBangChoice" aria-describedby="custom-bang-description">
+                <span id="custom-bang-description">Use a custom bang</span>
+              </label>
+
+              <div class="option-content hidden" id="customBangContent">
+                <div class="custom-bang-container">
+                  <span class="bang-prefix" aria-hidden="true">!</span>
+                  <input type="text" id="customBang" class="custom-bang-input" placeholder="Enter any bang..." aria-label="Enter custom bang">
+                  <button type="button" class="custom-bang-button" onclick="saveDefaultEngine('customBang')" aria-label="Set custom bang as default">Set Default</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="option-selector">
+              <label>
+                <input type="radio" name="engineChoice" id="customEngineUrlChoice" aria-describedby="custom-engine-url-description">
+                <span id="custom-engine-url-description">Use a custom engine URL</span>
+              </label>
+
+              <div class="option-content hidden" id="customEngineUrlContent">
+                <div class="custom-engine-container">
+                  <input type="text" id="customEngineUrl" class="custom-engine-input" placeholder="%s will be replaced by the query" aria-label="Enter custom search engine URL">
+                  <button type="button" class="custom-engine-button" onclick="saveDefaultEngine('customEngineUrl')" aria-label="Set custom URL as default">Set Default</button>
+                </div>
+                <div id="urlPreview" class="url-preview" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="currentDefault" class="current-default" aria-live="polite">Current default: DuckDuckGo</div>
+        </div>
+
+        <div class="theme-toggle-container setting-group" role="region" aria-labelledby="appearance-title">
+          <h3 id="appearance-title">Appearance</h3>
+          <div class="setting-section">
+            <label class="theme-toggle" for="themeToggle">
+              <input type="checkbox" id="themeToggle" aria-label="Toggle dark mode">
+              <span class="theme-slider" aria-hidden="true"></span>
+              <span class="theme-label">Dark Mode</span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="settings-container">
-      <div class="default-engine-container">
-        <h3>Set Default Search Engine</h3>
-        <div>
-          <label for="defaultEngine">Select from popular engines: </label>
-          <select id="defaultEngine" class="default-engine-select" onchange="saveDefaultEngine('select')">
-            <option value="">DuckDuckGo (default)</option>
-            <!-- Will be populated dynamically -->
-          </select>
-        </div>
-
-        <div class="custom-bang-container">
-          <label for="customBang">Or enter any bang: </label>
-          <span class="bang-prefix">!</span>
-          <input type="text" id="customBang" class="custom-bang-input" placeholder="e.g. w">
-          <button type="button" class="custom-bang-button" onclick="saveDefaultEngine('custom')">Set as Default</button>
-        </div>
-
-        <div class="current-default" id="currentDefault">Current default: DuckDuckGo</div>
+    <footer class="footer" role="contentinfo">
+      <div class="footer-spacer"></div>
+      <div class="footer-content">
+        <p>Powered by <a href="https://Cogilabs.eu/" aria-label="Visit Cogilabs website">Cogilabs.eu</a></p>
       </div>
-      <div class="theme-toggle-container">
-        <h3>Theme Settings</h3>
-        <div class="theme-options">
-          <label class="theme-toggle">
-            <input type="checkbox" id="themeToggle">
-            <span class="theme-slider"></span>
-            <span class="theme-label">Dark Mode</span>
-          </label>
-        </div>
-      </div>
-    </div>
+      <a href="https://Cogilabs.eu/" aria-label="Cogilabs homepage">
+        <img src="https://cogilabs.eu/Images/Cogilabs-long-contour-wh-notxt.svg" alt="Cogilabs Logo" class="footer-logo">
+      </a>
+    </footer>
   </div>
-  <div class="copy-notification" id="copyNotification">Copied to clipboard!</div>
 
-  <footer class="footer">
-    <div class="footer-spacer"></div>
-    <div class="footer-content">
-      <p>Powered by <a href="https://Cogilabs.eu/">Cogilabs.eu</a></p>
-    </div>
-    <a href="https://Cogilabs.eu/">
-      <img src="https://cogilabs.eu/Images/Cogilabs-long-contour-wh-notxt.svg" alt="Cogilabs Logo" class="footer-logo">
-    </a>
-  </footer>
+  <div class="copy-notification" id="copyNotification" role="alert" aria-live="assertive">Copied to clipboard!</div>
 
   <script>
     let bangData = [];
     const popularEngines = [
       { t: 'g', name: 'Google' },
+      { t: 'gweb', name: 'Google Web Tab' },
       { t: 'b', name: 'Bing' },
       { t: 'y', name: 'Yahoo' },
       { t: 'qw', name: 'Qwant' },
@@ -455,23 +766,47 @@
         const cached = localStorage.getItem('ddgBangs');
         const lastUpdate = localStorage.getItem('ddgBangsTimestamp');
         const now = Date.now();
-
+    
         if (cached && lastUpdate && (now - parseInt(lastUpdate) < 24 * 60 * 60 * 1000)) {
           bangData = [...JSON.parse(cached), ...customBangs];
           populateDefaultEngineOptions();
           return;
         }
-
-        const response = await fetch('ddgBangs.js');
-        const text = await response.text();
-
-        const ddgBangs = JSON.parse(text);
-
-        localStorage.setItem('ddgBangs', JSON.stringify(ddgBangs));
-        localStorage.setItem('ddgBangsTimestamp', now.toString());
-
-        bangData = [...ddgBangs, ...customBangs];
-        populateDefaultEngineOptions();
+    
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+        
+        try {
+          const response = await fetch('ddgBangs.js', { 
+            signal: controller.signal 
+          });
+          
+          clearTimeout(timeoutId);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          
+          const text = await response.text();
+          const ddgBangs = JSON.parse(text);
+    
+          localStorage.setItem('ddgBangs', JSON.stringify(ddgBangs));
+          localStorage.setItem('ddgBangsTimestamp', now.toString());
+    
+          bangData = [...ddgBangs, ...customBangs];
+        } catch (fetchError) {
+          console.error('Error fetching bangs:', fetchError.name === 'AbortError' ? 
+            'Request timed out after 5 seconds' : fetchError.message);
+          
+          const cached = localStorage.getItem('ddgBangs');
+          if (cached) {
+            bangData = [...JSON.parse(cached), ...customBangs];
+          } else {
+            bangData = [...customBangs];
+          }
+        } finally {
+          populateDefaultEngineOptions();
+        }
       } catch (error) {
         console.error('Error loading bangs:', error);
         const cached = localStorage.getItem('ddgBangs');
@@ -507,8 +842,35 @@
       }
     }
 
+    function validateCustomUrl(url) {
+      if (!url || url.trim() === '') {
+        return { valid: false, message: 'URL cannot be empty' };
+      }
+  
+      if (!url.includes('%s')) {
+        return { valid: false, message: '%s is missing in the URL' };
+      }
+
+      try {
+        const urlObj = new URL(url);
+        
+        if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
+          return { valid: false, message: 'URL must use http or https protocol' };
+        }
+        
+        return { valid: true };
+      } catch (e) {
+        return { valid: false, message: 'Invalid URL format' };
+      }
+    }
+
     function updateCurrentDefaultDisplay(bangTag) {
       const displayElement = document.getElementById('currentDefault');
+
+      if (bangTag && bangTag.startsWith("http")) {
+        displayElement.textContent = "Current default: Custom URL";
+        return;
+      }
 
       if (!bangTag) {
         displayElement.textContent = "Current default: DuckDuckGo";
@@ -518,8 +880,6 @@
       const bang = bangData.find(b => b.t === bangTag);
       if (bang) {
         displayElement.textContent = `Current default: ${bang.s} (!${bangTag})`;
-      } else {
-        displayElement.textContent = `Current default: !${bangTag}`;
       }
     }
 
@@ -529,14 +889,28 @@
       if (source === 'select') {
         value = document.getElementById('defaultEngine').value;
         document.getElementById('customBang').value = '';
-      } else if (source === 'custom') {
+      } else if (source === 'customBang') {
         value = document.getElementById('customBang').value.trim();
+        if (value.startsWith('!')) {
+          value = value.substring(1);
+        }
+
         document.getElementById('defaultEngine').value = '';
 
         if (value && !bangData.some(b => b.t === value)) {
           alert(`The bang '!${value}' was not found in available bangs.`);
           return;
         }
+      } else if (source === 'customEngineUrl') {
+        const urlInput = document.getElementById('customEngineUrl').value.trim();
+        const validation = validateCustomUrl(urlInput);
+        
+        if (!validation.valid) {
+          alert(validation.message);
+          return;
+        }
+        
+        value = sanitizeUrl(urlInput);
       }
 
       if (value) {
@@ -548,74 +922,93 @@
       updateCurrentDefaultDisplay(value);
     }
 
-        function findBang(query) {
+    function sanitizeUrl(url) {
+      return url.replace(/javascript:/gi, '')
+                .replace(/data:/gi, '')
+                .replace(/vbscript:/gi, '');
+    }
+
+    function ensureValidSearchUrl(url, query) {
+      if (!url.includes('%s')) {
+        if (url.endsWith('=')) {
+          return url + encodeURIComponent(query);
+        }
+        else if (url.includes('?') && !url.includes('=')) {
+          return url + 'q=' + encodeURIComponent(query);
+        }
+        else {
+          const separator = url.includes('?') ? '&' : '?';
+          return url + separator + 'q=' + encodeURIComponent(query);
+        }
+      }
+      
+      return url.replace('%s', encodeURIComponent(query));
+    }
+
+    function findBang(query) {
       const tokens = query.split(' ');
-    
+      const encodedQuery = encodeURIComponent(query);
+
       for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i].trim();
         if (token.startsWith('!')) {
           const bangName = token.substring(1);
-    
+
           const bang = bangData.find(b => b.t === bangName);
           if (bang) {
             tokens.splice(i, 1);
             const cleanQuery = tokens.join(' ').trim();
-            
+            const bangEncodedQuery = encodeURIComponent(cleanQuery);
+
             if (!cleanQuery) {
               try {
                 const searchUrl = new URL(bang.u.replace('{{{s}}}', ''));
-                
+
                 if (searchUrl.search || bang.u.includes('search') || bang.u.includes('query')) {
                   const pathParts = searchUrl.pathname.split('/');
-                  if (pathParts.length > 1 && 
-                     (pathParts[pathParts.length-1].includes('search') || 
+                  if (pathParts.length > 1 &&
+                     (pathParts[pathParts.length-1].includes('search') ||
                       pathParts[pathParts.length-1].includes('results'))) {
                     pathParts.pop();
                   }
-                  
-                  return {
-                    url: `${searchUrl.origin}${pathParts.join('/')}${pathParts.length > 1 ? '/' : ''}`,
-                    cleanQuery: ''
-                  };
+
+                  if (pathParts.length === 2 && pathParts[0] === "" && pathParts[1] === "") {
+                    return `${searchUrl.origin}/`;
+                  } else {
+                    return `${searchUrl.origin}${pathParts.join('/')}${pathParts.length > 1 ? '/' : ''}`;
+                  }
                 }
-                
-                return {
-                  url: searchUrl.origin + '/',
-                  cleanQuery: ''
-                };
+
+                return searchUrl.origin + '/';
+
               } catch (e) {
                 if (bang.d) {
-                  return {
-                    url: `https://${bang.d}/`,
-                    cleanQuery: ''
-                  };
+                  return `https://${bang.d}`;
                 }
               }
             }
-            
-            return {
-              url: bang.u.replace('{{{s}}}', ''),
-              cleanQuery: cleanQuery
-            };
+
+            return bang.u.replace('{{{s}}}', bangEncodedQuery);
           }
         }
       }
-    
+
       const defaultEngine = localStorage.getItem('defaultSearchEngine');
       if (defaultEngine) {
+        if (defaultEngine.startsWith("http")) {
+          if (defaultEngine.includes("search.cogilabs.eu")) {
+            return "https://search.cogilabs.eu/";
+          }
+          //return defaultEngine.replace("%s", encodedQuery);
+          return ensureValidSearchUrl(defaultEngine, encodedQuery);
+        }
         const defaultBang = bangData.find(b => b.t === defaultEngine);
         if (defaultBang) {
-          return {
-            url: defaultBang.u.replace('{{{s}}}', ''),
-            cleanQuery: query
-          };
+          return defaultBang.u.replace('{{{s}}}', encodedQuery);
         }
       }
-    
-      return {
-        url: 'https://duckduckgo.com/?q=',
-        cleanQuery: query
-      };
+
+      return 'https://duckduckgo.com/?q=' + encodedQuery;
     }
 
     function getUrlParameters() {
@@ -639,25 +1032,6 @@
       document.querySelector('.landing-page').style.display = 'block';
     }
 
-    async function init() {
-      const urlParams = getUrlParameters();
-
-      if (urlParams.q) {
-        await loadBangs();
-        const searchResult = findBang(urlParams.q);
-        window.location.replace(searchResult.url + searchResult.cleanQuery);
-      } else if (urlParams.query) {
-        await loadBangs();
-        const searchResult = findBang(urlParams.query);
-        window.location.replace(searchResult.url + searchResult.cleanQuery);
-      } else {
-        showLandingPage();
-        await loadBangs();
-        populateCustomBangsList();
-        initThemeToggle();
-      }
-    }
-
     function populateCustomBangsList() {
       const listContainer = document.querySelector('.custom-bangs-list');
       if (!listContainer) return;
@@ -671,6 +1045,9 @@
         const shortcut = document.createElement('span');
         shortcut.className = 'bang-shortcut clickToCopy';
         shortcut.textContent = `!${bang.t}`;
+        shortcut.setAttribute('role', 'button');
+        shortcut.setAttribute('tabindex', '0');
+        shortcut.setAttribute('aria-label', `Copy ${bang.s} bang: !${bang.t}`);
 
         const name = document.createElement('span');
         name.className = 'bang-name';
@@ -685,6 +1062,8 @@
       if (toggleButton) {
         toggleButton.addEventListener('click', function() {
           this.classList.toggle('active');
+          const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+          this.setAttribute('aria-expanded', !expanded);
           listContainer.classList.toggle('show');
         });
       }
@@ -736,22 +1115,105 @@
       });
     }
 
+    function initEngineOptions() {
+      const popularChoice = document.getElementById('popularEngineChoice');
+      const customBangChoice = document.getElementById('customBangChoice');
+      const customEngineUrlChoice = document.getElementById('customEngineUrlChoice');
+      const popularContent = document.getElementById('popularEngineContent');
+      const customBangContent = document.getElementById('customBangContent');
+      const customEngineUrlContent = document.getElementById('customEngineUrlContent');
+
+      document.getElementById('customEngineUrl').addEventListener('input', function() {
+        const previewEl = document.getElementById('urlPreview');
+        if (!previewEl) return;
+        
+        const url = this.value.trim();
+        const validation = validateCustomUrl(url);
+        
+        if (validation.valid) {
+          const exampleQuery = "cat videos";
+          const exampleUrl = url.replace('%s', encodeURIComponent(exampleQuery));
+          previewEl.textContent = `Example: ${exampleUrl}`;
+          previewEl.classList.remove('error');
+        } else {
+          previewEl.textContent = validation.message;
+          previewEl.classList.add('error');
+        }
+      });
+
+      const defaultEngine = localStorage.getItem('defaultSearchEngine');
+      if (defaultEngine) {
+        const isPopular = [...document.getElementById('defaultEngine').options].some(opt => opt.value === defaultEngine);
+        const isCustomBang = !isPopular && !defaultEngine.startsWith('http') && bangData.some(b => b.t === defaultEngine);
+
+        if (isPopular) {
+          popularChoice.checked = true;
+          document.getElementById('defaultEngine').value = defaultEngine;
+          popularContent.classList.remove('hidden');
+          customBangContent.classList.add('hidden');
+          customEngineUrlContent.classList.add('hidden');
+        } else if (isCustomBang) {
+          customBangChoice.checked = true;
+          document.getElementById('customBang').value = defaultEngine;
+          popularContent.classList.add('hidden');
+          customBangContent.classList.remove('hidden');
+          customEngineUrlContent.classList.add('hidden');
+        } else {
+          customEngineUrlChoice.checked = true;
+          document.getElementById('customEngineUrl').value = defaultEngine;
+          popularContent.classList.add('hidden');
+          customBangContent.classList.add('hidden');
+          customEngineUrlContent.classList.remove('hidden');
+        }
+
+        updateCurrentDefaultDisplay(defaultEngine);
+      }
+
+      popularChoice.addEventListener('change', function() {
+        if (this.checked) {
+          popularContent.classList.remove('hidden');
+          customBangContent.classList.add('hidden');
+          customEngineUrlContent.classList.add('hidden');
+          saveDefaultEngine('select');
+        }
+      });
+
+      customBangChoice.addEventListener('change', function() {
+        if (this.checked) {
+          popularContent.classList.add('hidden');
+          customBangContent.classList.remove('hidden');
+          customEngineUrlContent.classList.add('hidden');
+          document.getElementById('customBang').focus();
+        }
+      });
+
+      customEngineUrlChoice.addEventListener('change', function() {
+        if (this.checked) {
+          popularContent.classList.add('hidden');
+          customBangContent.classList.add('hidden');
+          customEngineUrlContent.classList.remove('hidden');
+          document.getElementById('customEngineUrl').focus();
+        }
+      });
+    }
+
     async function init() {
       const urlParams = getUrlParameters();
 
       if (urlParams.q) {
         await loadBangs();
         const searchResult = findBang(urlParams.q);
-        window.location.replace(searchResult.url + searchResult.cleanQuery);
+        window.location.replace(searchResult);
       } else if (urlParams.query) {
         await loadBangs();
         const searchResult = findBang(urlParams.query);
-        window.location.replace(searchResult.url + searchResult.cleanQuery);
+        window.location.replace(searchResult);
       } else {
         showLandingPage();
         await loadBangs();
         populateCustomBangsList();
         initThemeToggle();
+        initEngineOptions();
       }
     }
 
