@@ -34,10 +34,11 @@ A "bang" is a special shortcut that redirects your search to a specific search e
 ## Features
 
 - 🔍 **Fast Search Routing**: Instantly redirects your queries to your preferred search engines
-- 🔄 **Default Engine Selection**: Set any search engine as your default
+- 🔄 **Default Engine Selection**: Set any search engine as your default (including custom URLs)
+- 🛠️ **Custom Bangs**: Access to all DuckDuckGo bangs plus custom additions
+- 🌐 **Custom Engine URL**: Define your own search engine by URL, using `%s` as a placeholder
 - 🌓 **Light/Dark Theme**: Toggle between light and dark mode for comfortable browsing
 - 📋 **Easy Integration**: Add CogiSearch to any browser with a simple URL
-- 🛠️ **Custom Bangs**: Access to all DuckDuckGo bangs plus custom additions
 - 💾 **No Tracking**: Your searches aren't stored or tracked
 
 ## Usage
@@ -45,7 +46,7 @@ A "bang" is a special shortcut that redirects your search to a specific search e
 ### Basic Searching
 
 1. Enter your search query in the search box
-2. Add a bang at the beginning of your query to use a specific search engine (e.g., `!g` for Google)
+2. Add a bang anywhere in your query to use a specific search engine (e.g., `!g` for Google)
 3. If no bang is specified, your default search engine will be used
 
 ### Popular Bangs
@@ -94,6 +95,11 @@ A "bang" is a special shortcut that redirects your search to a specific search e
             <td>YouTube</td>
             <td><code>!yt cooking tutorials</code></td>
         </tr>
+        <tr>
+            <td><code>!w</code></td>
+            <td>Wikipédia</td>
+            <td><code>!w The Backrooms</code></td>
+        </tr>
     </tbody>
 </table>
 
@@ -101,8 +107,13 @@ A "bang" is a special shortcut that redirects your search to a specific search e
 
 1. Visit the CogiSearch homepage
 2. Scroll down to the Settings section
-3. Select an engine from the dropdown or enter a bang for any available search engine
+3. Choose between:
+   - Selecting a **popular engine**
+   - Entering a **custom bang** (e.g., `!g`)
+   - Providing a **custom engine URL** (e.g., `https://example.com/search?q=%s`)
 4. Your choice will be saved for future searches
+
+> **Note:** When using a custom URL, `%s` will be replaced by your search query dynamically.
 
 ### Adding to Your Browser
 
@@ -144,7 +155,20 @@ const customBangs = [
 ];
 ```
 
-I plan to add a "add your own bangs" feature, but for now, if you use CogiSearch as is, don't hesitate to do a pull request with your custom bangs!
+I plan to add a "add your own bangs" feature later on. Meanwhile, if you're using the hosted version, feel free to submit a pull request with your custom bangs!
+
+### Setting a Custom Engine URL
+
+You can also define your own search engine URL without creating a bang.
+
+Example:
+
+- Enter `https://example.com/search?q=%s` in the custom engine URL field
+- `%s` will automatically be replaced with your search query
+
+This allows you to use **any search engine** that supports direct query URLs!
+
+> Example custom URL: `https://github.com/search?q=%s` will search GitHub directly.
 
 ## License
 
