@@ -86,11 +86,6 @@ Un "bang" est un raccourci spécial qui redirige votre recherche vers un moteur 
             <td><code>!brave messagerie sécurisée</code></td>
         </tr>
         <tr>
-            <td><code>!w</code></td>
-            <td>Wikipédia</td>
-            <td><code>!w réseaux de neurones</code></td>
-        </tr>
-        <tr>
             <td><code>!yt</code></td>
             <td>YouTube</td>
             <td><code>!yt tutoriels cuisine</code></td>

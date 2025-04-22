@@ -86,18 +86,13 @@ A "bang" is a special shortcut that redirects your search to a specific search e
             <td><code>!brave secure messaging</code></td>
         </tr>
         <tr>
-            <td><code>!w</code></td>
-            <td>Wikipedia</td>
-            <td><code>!w neural networks</code></td>
-        </tr>
-        <tr>
             <td><code>!yt</code></td>
             <td>YouTube</td>
             <td><code>!yt cooking tutorials</code></td>
         </tr>
         <tr>
             <td><code>!w</code></td>
-            <td>Wikipédia</td>
+            <td>Wikipedia</td>
             <td><code>!w The Backrooms</code></td>
         </tr>
     </tbody>
