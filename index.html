@@ -103,10 +103,24 @@
     .logo-container {
       margin-bottom: 2.5rem;
       text-align: center;
+      width: 100%;
+      height: 115px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
+    
+    .logo-container object {
+      max-width: 450px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: contain;
+    }
+    
     .logo {
       max-width: 450px;
+      width: 100%;
       height: auto;
     }
 
@@ -529,6 +543,7 @@
         padding: 1.5rem;
       }
 
+      .logo-container object,
       .logo {
         max-width: 300px;
       }
@@ -636,7 +651,9 @@
   <div class="landing-page" role="main">
     <div class="search-container">
       <div class="logo-container">
-        <img src="cogiSearch.svg" alt="CogiSearch" class="logo">
+        <object type="image/svg+xml" data="cogiSearch.svg" class="logo" title="CogiSearch Logo">
+          <p>Your browser does not support SVG. Please visit <a href="https://cogilabs.eu">Cogilabs.eu</a> for more information.</p>
+        </object>
       </div>
 
       <form class="search-form" onsubmit="handleSearch(event)" aria-label="Search form">
