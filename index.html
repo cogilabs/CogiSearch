@@ -378,10 +378,6 @@
       flex: 0.2;
       min-width: 100px;
     }
-    
-    .user-bang-url-input {
-      flex: 0.7;
-    }
 
     .user-bang-input:focus, .user-bang-url-input:focus {
       border-color: var(--input-focus-border);
@@ -859,6 +855,7 @@
         <p>CogiSearch is a search router inspired by <a href="https://duckduckgo.com/bang/" target="_blank">DuckDuckGo's bang feature</a>. It's faster and lets you set your preferred default search engine.</p>
         <p>To use a bang, simply type <span class="emphase">!&lt;bang&gt;</span> in your search query. For example, search on Google with <span class="emphase">!g</span>.</p>
         <p>All DuckDuckGo bangs are available, plus custom ones specifically added for CogiSearch.</p>
+        <p>You can also add your own user bangs, see the <a href="#user-banglist-title">User Bangs</a> section below.</p>
 
         <span class="custom-bangs-toggle" id="customBangsToggle" aria-expanded="false" aria-controls="custom-bangs-list">
           Available Custom Bangs :</span>
@@ -939,10 +936,10 @@
 
       <div class="card user-banglist-container full-width" role="region" aria-labelledby="user-banglist-title">
         <h2 class="card-title" id="user-banglist-title">
-          <span class="icon" aria-hidden="true">📚</span> Custom Bangs
+          <span class="icon" aria-hidden="true">📚</span> User Bangs
         </h2>
         <div>
-          <p>This section will allow you to add custom bangs to CogiSearch. They will be saved in your browser memory.</p>
+          <p>This section will allow you to add your own bangs to CogiSearch. They will be saved in your browser memory.</p>
 
           <div class="user-bangs-list" id="user-bangs-list">
             <!-- Will be populated dynamically -->
@@ -950,10 +947,10 @@
 
           <form class="user-bang-container" onsubmit="addCustomBang(event)">
             <span class="bang-prefix" aria-hidden="true">!</span>
-            <input type="text" id="customBangName" class="user-bang-input" placeholder="Custom bang" aria-label="Enter custom bang name">
+            <input type="text" id="customBangName" class="user-bang-input" placeholder="Your bang" aria-label="Enter user bang name">
             <span class="arrow" aria-hidden="true">→</span>
-            <input type="text" id="customBangUrl" class="user-bang-url-input" placeholder="URL, %s will be replaced by the query" aria-label="Enter custom bang URL" oninput="previewUserBangUrl()">
-            <button type="submit" class="user-bang-add-button">Add Custom Bang</button>
+            <input type="text" id="customBangUrl" class="user-bang-url-input" placeholder="URL, %s will be replaced by the query" aria-label="Enter user bang URL" oninput="previewUserBangUrl()">
+            <button type="submit" class="user-bang-add-button">Add Bang</button>
           </form>
           <div id="userBangUrlPreview" class="url-preview" aria-live="polite"></div>
         </div>
