@@ -136,21 +136,22 @@ Aucun traitement côté serveur n'est nécessaire : tout fonctionne en JavaScrip
 
 ### Ajouter des bangs personnalisés
 
-Si vous hébergez vous-même CogiSearch, vous pouvez ajouter vos propres bangs personnalisés en modifiant le fichier `customBangs.js` :
+Vous pouvez maintenant ajouter vos propres bangs personnalisés directement depuis l'interface utilisateur :
 
-```javascript
-// Ajoutez vos bangs personnalisés à ce tableau
-const customBangs = [
-  {
-    t: "exemple",  // Déclencheur du bang (ce qui vient après le !)
-    s: "Exemple de Recherche",  // Nom affiché
-    u: "https://exemple.com/recherche?q={{{s}}}", // URL avec {{{s}}} comme placeholder
-    d: "exemple.com"  // Domaine
-  }
-];
-```
+1. Faites défiler jusqu'à la section **Bangs utilisateur** sur la page principale
+2. Entrez le nom de votre bang dans le premier champ
+3. Entrez l'URL dans le second champ, en utilisant `%s` comme placeholder pour la requête de recherche
+4. Cliquez sur le bouton "Ajouter Bang"
 
-Une fonction "ajouter vos propres bangs" est prévue. En attendant, si vous utilisez la version hébergée, n'hésitez pas à proposer vos bangs via une pull request !
+Vos bangs personnalisés seront stockés dans le stockage local de votre navigateur et immédiatement disponibles pour vos recherches. Vous pouvez en ajouter autant que nécessaire et les supprimer à tout moment. Ces bangs personnalisés continuent d'exister entre les sessions de navigation sur le même appareil.
+
+Exemple :
+- Nom du bang : `reddit`
+- URL : `https://www.reddit.com/search?q=%s`
+
+Cela créera un bang `!reddit` qui recherchera directement sur Reddit.  
+  
+Les bangs créés de cette façon écraseront tous les bangs existants avec le même déclencheur.
 
 ### Définir une URL de moteur personnalisée
 

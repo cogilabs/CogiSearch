@@ -136,21 +136,22 @@ No server-side processing is required as all functionality is client-side JavaSc
 
 ### Adding Custom Bangs
 
-If you host the project yourself, you can add your own custom bangs by editing the `customBangs.js` file:
+You can now add your own custom bangs directly from the user interface:
 
-```javascript
-// Add your custom bangs to this array
-const customBangs = [
-  {
-    t: "example",  // Bang trigger (what comes after the !)
-    s: "Example Search",  // Display name
-    u: "https://example.com/search?q={{{s}}}", // URL with {{{s}}} as the search placeholder
-    d: "example.com"  // Domain
-  }
-];
-```
+1. Scroll down to the **User Bangs** section on the main page
+2. Enter your bang name in the first field
+3. Enter the URL in the second field, using `%s` as a placeholder for the search query
+4. Click the "Add Bang" button
 
-I plan to add a "add your own bangs" feature later on. Meanwhile, if you're using the hosted version, feel free to submit a pull request with your custom bangs!
+Your custom bangs will be stored in your browser's local storage and available immediately for searches. You can add as many as you need and delete them any time. These custom bangs will persist between browser sessions on the same device.
+
+Example:
+- Bang name: `reddit`
+- URL: `https://www.reddit.com/search?q=%s`
+
+This will create a `!reddit` bang that searches Reddit directly.  
+  
+Bangs created this way will overwrite any existing bangs with the same trigger.
 
 ### Setting a Custom Engine URL
 
