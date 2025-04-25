@@ -25,5 +25,14 @@ const customBangs = [
     "sc":"Google",
     "t": "gweb",
     "u": "https://www.google.com/search?udm=14&q={{{s}}}"
+  },
+  {
+    "c": "Tech",
+    "d": "lora.watteco.fr",
+    "r": 0,
+    "s": "Watteco Decoder",
+    "sc": "Tools",
+    "t": "wtcd",
+    "u": "https://lora.watteco.fr/Lora/Decoders/index.php?trame={{{s}}}&MySelectMenu=0&+submit=Submit"
   }
 ];
