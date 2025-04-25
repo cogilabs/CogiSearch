@@ -109,7 +109,7 @@
       justify-content: center;
       align-items: center;
     }
-    
+
     .logo-container object {
       max-width: 450px;
       width: 100%;
@@ -117,7 +117,7 @@
       border: none;
       object-fit: contain;
     }
-    
+
     .logo {
       max-width: 450px;
       width: 100%;
@@ -214,10 +214,53 @@
       margin-top: 2rem;
       margin-bottom: 5rem;
     }
+    
+    .custom-bangs-list {
+      white-space: normal;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .custom-bangs-list.show {
+      max-height: 300px;
+      padding-top: 0.75rem;
+      overflow-y: auto;
+    }
 
     @media (min-width: 768px) {
       .main-content {
         grid-template-columns: 1fr 1fr;
+        align-items: start;
+        display: grid;
+      }
+
+      .card {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .about-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .custom-bangs-list {
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+        max-height: 300px;
+      }
+
+      .settings-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .full-width {
+        grid-column: 1 / -1;
       }
     }
 
@@ -268,10 +311,6 @@
       margin-bottom: 1.5rem;
     }
 
-    .setting-group {
-      margin-bottom: 1.5rem;
-    }
-
     .setting-label {
       display: block;
       margin-bottom: 0.5rem;
@@ -301,6 +340,13 @@
       margin-top: 1rem;
     }
 
+    .user-bang-container {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
     .bang-prefix {
       font-size: 1.1rem;
       font-weight: 600;
@@ -308,7 +354,15 @@
       color: var(--bang-tag-color);
     }
 
-    .custom-bang-input, .custom-engine-input {
+    .arrow {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      color: var(--bang-tag-color);
+    }
+
+    .custom-bang-input, .custom-engine-input, .custom-url-input, .user-bang-input, .user-bang-url-input {
       flex: 1;
       padding: 0.75rem;
       font-size: 1rem;
@@ -320,11 +374,24 @@
       transition: all 0.3s ease;
     }
 
-    .custom-bang-input:focus, .custom-engine-input:focus {
-      border-color: var (--input-focus-border);
+    .user-bang-input {
+      flex: 0.2;
+      min-width: 100px;
+    }
+    
+    .user-bang-url-input {
+      flex: 0.7;
     }
 
-    .custom-bang-button, .custom-engine-button {
+    .user-bang-input:focus, .user-bang-url-input:focus {
+      border-color: var(--input-focus-border);
+    }
+
+    .custom-bang-input:focus, .custom-engine-input:focus, .custom-url-input:focus {
+      border-color: var(--input-focus-border);
+    }
+
+    .custom-bang-button, .custom-engine-button, .user-bang-add-button {
       margin-left: 0.75rem;
       padding: 0.75rem 1rem;
       font-size: 1rem;
@@ -337,7 +404,7 @@
       font-weight: 500;
     }
 
-    .custom-bang-button:hover, .custom-engine-button:hover {
+    .custom-bang-button:hover, .custom-engine-button:hover, .user-bang-add-button:hover {
       background-color: var(--button-hover-background);
     }
 
@@ -407,17 +474,70 @@
       font-weight: 500;
     }
 
-    .custom-bangs-toggle {
-      background: none;
-      border: none;
+    .user-bangs-list {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin-bottom: 1rem;
+    }
+
+    .user-bang-delete-button {
+      position: sticky;
+      top: 0;
+      right: 0.5rem;
+      float: right;
+      background: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--secondary-text-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0 0.5rem;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      z-index: 2;
+      margin-left: auto;
+      margin-right: 0;
+      margin-top: -1rem;
+    }
+
+    .user-bang-delete-button:hover {
+      color: #e74c3c;
+      transform: scale(1.2);
+    }
+    
+    .user-bang-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      margin-bottom: 0.5rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: relative;
+    }
+    
+    .user-bang-url {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 30px;
+    }
+
+    .user-bang-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+    }
+
+    .custom-bangs-toggle {
       color: var(--accent-color);
-      font-size: 1rem;
       font-weight: 600;
-      cursor: pointer;
-      margin: 1.5rem 0 0.5rem;
+      margin: 0 0 0.5rem;
       padding: 0.5rem 0;
     }
 
@@ -430,13 +550,7 @@
     }
 
     .custom-bangs-list {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.5s ease;
-      gap: 0.75rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      width: 100%;
+      white-space: normal;
     }
 
     .custom-bangs-list.show {
@@ -555,31 +669,93 @@
 
       .search-input {
         border-right: 2px solid var(--input-border);
-        border-radius: 12px;
+        border-radius: 12px 12px 0 0;
         border-bottom: none;
       }
 
       .search-button {
-        border-radius: 12px;
+        border-radius: 0 0 12px 12px;
       }
 
-      .custom-bang-container {
+      .custom-bang-container, .custom-engine-container {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .custom-bang-button {
+      .custom-bang-button, .custom-engine-button {
         margin-left: 0;
         margin-top: 0.75rem;
         width: 100%;
+      }
+      
+      .user-bang-container {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        padding-left: 1.5rem; /* Add padding to make room for the prefix */
+      }
+      
+      .bang-prefix {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.5rem;
+      }
+      
+      .user-bang-add-button {
+        margin-left: 0;
+        margin-top: 0.75rem;
+        width: 100%;
+      }
+      
+      .user-bang-input, .user-bang-url-input {
+        width: 100%;
+        margin-bottom: 0.5rem;
       }
 
       .footer {
         flex-direction: column;
         gap: 1rem;
+        padding: 1rem;
       }
 
       .footer-spacer {
+        display: none;
+      }
+      
+      .bang-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .bang-shortcut {
+        margin-bottom: 0.5rem;
+      }
+      
+      .user-bang-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        white-space: normal;
+        max-width: 100%;
+        position: relative;
+      }
+      
+      .user-bang-url {
+        white-space: normal;
+        word-break: break-all;
+        width: 100%;
+        padding-right: 30px;
+      }
+      
+      .user-bang-delete-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        margin: 0;
+        border: none;
+        background: none;
+      }
+      
+      .arrow {
         display: none;
       }
     }
@@ -645,6 +821,17 @@
       margin-bottom: 1rem;
       font-size: 1.1rem;
     }
+
+    .url-preview {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--secondary-text-color);
+      word-break: break-all;
+    }
+
+    .url-preview.error {
+      color: #e74c3c;
+    }
   </style>
 </head>
 <body>
@@ -673,9 +860,8 @@
         <p>To use a bang, simply type <span class="emphase">!&lt;bang&gt;</span> in your search query. For example, search on Google with <span class="emphase">!g</span>.</p>
         <p>All DuckDuckGo bangs are available, plus custom ones specifically added for CogiSearch.</p>
 
-        <button class="custom-bangs-toggle" aria-expanded="false" aria-controls="custom-bangs-list">
-          View Available Custom Bangs <span aria-hidden="true">▼</span>
-        </button>
+        <span class="custom-bangs-toggle" id="customBangsToggle" aria-expanded="false" aria-controls="custom-bangs-list">
+          Available Custom Bangs :</span>
         <div class="custom-bangs-list" id="custom-bangs-list">
           <!-- Will be populated dynamically -->
         </div>
@@ -750,6 +936,28 @@
           </div>
         </div>
       </div>
+
+      <div class="card user-banglist-container full-width" role="region" aria-labelledby="user-banglist-title">
+        <h2 class="card-title" id="user-banglist-title">
+          <span class="icon" aria-hidden="true">📚</span> Custom Bangs
+        </h2>
+        <div>
+          <p>This section will allow you to add custom bangs to CogiSearch. They will be saved in your browser memory.</p>
+
+          <div class="user-bangs-list" id="user-bangs-list">
+            <!-- Will be populated dynamically -->
+          </div>
+
+          <form class="user-bang-container" onsubmit="addCustomBang(event)">
+            <span class="bang-prefix" aria-hidden="true">!</span>
+            <input type="text" id="customBangName" class="user-bang-input" placeholder="Custom bang" aria-label="Enter custom bang name">
+            <span class="arrow" aria-hidden="true">→</span>
+            <input type="text" id="customBangUrl" class="user-bang-url-input" placeholder="URL, %s will be replaced by the query" aria-label="Enter custom bang URL" oninput="previewUserBangUrl()">
+            <button type="submit" class="user-bang-add-button">Add Custom Bang</button>
+          </form>
+          <div id="userBangUrlPreview" class="url-preview" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
 
     <footer class="footer" role="contentinfo">
@@ -767,6 +975,8 @@
 
   <script>
     let bangData = [];
+    let userBangs = [];
+    //localStorage.removeItem('userBangs');
     const popularEngines = [
       { t: 'g', name: 'Google' },
       { t: 'gweb', name: 'Google Web Tab' },
@@ -782,39 +992,45 @@
       try {
         const cached = localStorage.getItem('ddgBangs');
         const lastUpdate = localStorage.getItem('ddgBangsTimestamp');
+        const cachedUserBangs = localStorage.getItem('userBangs');
         const now = Date.now();
-    
+
+        if (cachedUserBangs) {
+          console.log(cachedUserBangs);
+          userBangs = [...JSON.parse(cachedUserBangs)];
+        }
+
         if (cached && lastUpdate && (now - parseInt(lastUpdate) < 24 * 60 * 60 * 1000)) {
           bangData = [...JSON.parse(cached), ...customBangs];
           populateDefaultEngineOptions();
           return;
         }
-    
+
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
+
         try {
-          const response = await fetch('ddgBangs.js', { 
-            signal: controller.signal 
+          const response = await fetch('ddgBangs.js', {
+            signal: controller.signal
           });
-          
+
           clearTimeout(timeoutId);
-          
+
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
-          
+
           const text = await response.text();
           const ddgBangs = JSON.parse(text);
-    
+
           localStorage.setItem('ddgBangs', JSON.stringify(ddgBangs));
           localStorage.setItem('ddgBangsTimestamp', now.toString());
-    
+
           bangData = [...ddgBangs, ...customBangs];
         } catch (fetchError) {
-          console.error('Error fetching bangs:', fetchError.name === 'AbortError' ? 
+          console.error('Error fetching bangs:', fetchError.name === 'AbortError' ?
             'Request timed out after 5 seconds' : fetchError.message);
-          
+
           const cached = localStorage.getItem('ddgBangs');
           if (cached) {
             bangData = [...JSON.parse(cached), ...customBangs];
@@ -863,18 +1079,18 @@
       if (!url || url.trim() === '') {
         return { valid: false, message: 'URL cannot be empty' };
       }
-  
+
       if (!url.includes('%s')) {
         return { valid: false, message: '%s is missing in the URL' };
       }
 
       try {
         const urlObj = new URL(url);
-        
+
         if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
           return { valid: false, message: 'URL must use http or https protocol' };
         }
-        
+
         return { valid: true };
       } catch (e) {
         return { valid: false, message: 'Invalid URL format' };
@@ -921,12 +1137,12 @@
       } else if (source === 'customEngineUrl') {
         const urlInput = document.getElementById('customEngineUrl').value.trim();
         const validation = validateCustomUrl(urlInput);
-        
+
         if (!validation.valid) {
           alert(validation.message);
           return;
         }
-        
+
         value = sanitizeUrl(urlInput);
       }
 
@@ -958,7 +1174,7 @@
           return url + separator + 'q=' + encodeURIComponent(query);
         }
       }
-      
+
       return url.replace('%s', encodeURIComponent(query));
     }
 
@@ -966,12 +1182,26 @@
       const tokens = query.split(' ');
       const encodedQuery = encodeURIComponent(query);
 
+      const bangMap = new Map();
+
+      for (const bang of bangData) {
+        bangMap.set(bang.t, bang);
+      }
+      
+      for (const bang of customBangs) {
+        bangMap.set(bang.t, bang);
+      }
+      
+      for (const bang of userBangs) {
+        bangMap.set(bang.t, bang);
+      }
+
       for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i].trim();
         if (token.startsWith('!')) {
           const bangName = token.substring(1);
-
-          const bang = bangData.find(b => b.t === bangName);
+          const bang = bangMap.get(bangName);
+          
           if (bang) {
             tokens.splice(i, 1);
             const cleanQuery = tokens.join(' ').trim();
@@ -1016,10 +1246,9 @@
           if (defaultEngine.includes("search.cogilabs.eu")) {
             return "https://search.cogilabs.eu/";
           }
-          //return defaultEngine.replace("%s", encodedQuery);
           return ensureValidSearchUrl(defaultEngine, encodedQuery);
         }
-        const defaultBang = bangData.find(b => b.t === defaultEngine);
+        const defaultBang = bangMap.get(defaultEngine);
         if (defaultBang) {
           return defaultBang.u.replace('{{{s}}}', encodedQuery);
         }
@@ -1074,16 +1303,48 @@
         bangItem.appendChild(name);
         listContainer.appendChild(bangItem);
       });
+    }
 
-      const toggleButton = document.querySelector('.custom-bangs-toggle');
-      if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-          this.classList.toggle('active');
-          const expanded = this.getAttribute('aria-expanded') === 'true' || false;
-          this.setAttribute('aria-expanded', !expanded);
-          listContainer.classList.toggle('show');
-        });
-      }
+    function populateUserBangsList() {
+      const listContainer = document.querySelector('.user-bangs-list');
+      if (!listContainer) return;
+      
+      listContainer.innerHTML = '';
+
+      userBangs.sort((a, b) => a.s.localeCompare(b.s));
+
+      userBangs.forEach(bang => {
+        const bangItem = document.createElement('div');
+        bangItem.className = 'user-bang-item';
+
+        const shortcut = document.createElement('span');
+        shortcut.className = 'user-bang-shortcut clickToCopy';
+        shortcut.textContent = `!${bang.t}`;
+        shortcut.setAttribute('role', 'button');
+        shortcut.setAttribute('tabindex', '0');
+        shortcut.setAttribute('aria-label', `Copy ${bang.s} bang: !${bang.t}`);
+
+        const arrow = document.createElement('span');
+        arrow.className = 'arrow';
+        arrow.textContent = '→';
+
+        const name = document.createElement('span');
+        name.className = 'user-bang-url'; 
+        name.innerHTML = bang.u.replace("{{{s}}}", "<strong>cat%20videos</strong>");
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'user-bang-delete-button';
+        deleteButton.innerHTML = '&times;'; // × symbol
+        deleteButton.setAttribute('data-name', bang.t);
+        deleteButton.setAttribute('aria-label', `Delete custom bang !${bang.t}`);
+        deleteButton.onclick = removeCustomBang;
+
+        bangItem.appendChild(shortcut);
+        bangItem.appendChild(arrow);
+        bangItem.appendChild(name);
+        bangItem.appendChild(deleteButton);
+        listContainer.appendChild(bangItem);
+      });
     }
 
     function showNotification() {
@@ -1143,10 +1404,10 @@
       document.getElementById('customEngineUrl').addEventListener('input', function() {
         const previewEl = document.getElementById('urlPreview');
         if (!previewEl) return;
-        
+
         const url = this.value.trim();
         const validation = validateCustomUrl(url);
-        
+
         if (validation.valid) {
           const exampleQuery = "cat videos";
           const exampleUrl = url.replace('%s', encodeURIComponent(exampleQuery));
@@ -1213,6 +1474,118 @@
         }
       });
     }
+    
+    function equalizeCardHeights() {
+      if (window.innerWidth >= 768) {  // Only equalize on desktop
+        const settingsCard = document.querySelector('.settings-container');
+        const aboutCard = document.querySelector('.about-container');
+        const bangsList = document.querySelector('.custom-bangs-list');
+        
+        if (!settingsCard || !aboutCard || !bangsList) return;
+
+        aboutCard.style.height = 'auto';
+        settingsCard.style.height = 'auto';
+        bangsList.style.maxHeight = 'none';
+        
+        const settingsHeight = settingsCard.offsetHeight;
+        
+        let aboutContentHeight = 0;
+        for (const child of aboutCard.children) {
+          if (child !== bangsList) {
+            aboutContentHeight += child.offsetHeight;
+          }
+        }
+        
+        const bangsMaxHeight = settingsHeight - aboutContentHeight - 30;
+        
+        bangsList.style.maxHeight = `${bangsMaxHeight > 100 ? bangsMaxHeight : 100}px`;
+
+        aboutCard.style.height = `${settingsHeight}px`;
+      } else {
+        const aboutCard = document.querySelector('.about-container');
+        const bangsList = document.querySelector('.custom-bangs-list');
+        
+        if (aboutCard) aboutCard.style.height = 'auto';
+        if (bangsList) bangsList.style.maxHeight = '300px';
+      }
+    }
+
+    function previewUserBangUrl() {
+      const urlInput = document.getElementById('customBangUrl').value.trim();
+      const previewEl = document.getElementById('userBangUrlPreview');
+      
+      if (!previewEl) return;
+      
+      const validation = validateCustomUrl(urlInput);
+      
+      if (validation.valid) {
+        const exampleQuery = "cat videos";
+        const exampleUrl = urlInput.replace('%s', encodeURIComponent(exampleQuery));
+        previewEl.textContent = `Example: ${exampleUrl}`;
+        previewEl.classList.remove('error');
+      } else if (urlInput) {
+        previewEl.textContent = validation.message;
+        previewEl.classList.add('error');
+      } else {
+        previewEl.textContent = '';
+      }
+    }
+
+    function addCustomBang(event) {
+      event.preventDefault();
+
+      let bangName = document.getElementById('customBangName').value.trim();
+      const url = document.getElementById('customBangUrl').value.trim();
+      const domain = url.split('/')[2];
+      
+      if (!bangName) {
+        alert('Please enter a bang name');
+        return;
+      }
+
+      if (bangName.startsWith("!")) {
+        bangName = bangName.substring(1);
+      }
+      
+      const validation = validateCustomUrl(url);
+      if (!validation.valid) {
+        alert(validation.message);
+        return;
+      }
+      
+      const bang = { d: domain, t: bangName, s: bangName, u: url.replace("%s", "{{{s}}}") };
+      console.log(bang);
+
+      if (userBangs.some(b => b.t === bangName)) {
+        alert(`The bang '${bangName}' already exists.`);
+        return;
+      }
+
+      userBangs.push(bang);
+      localStorage.setItem('userBangs', JSON.stringify(userBangs));
+      populateUserBangsList();
+
+      document.getElementById('customBangName').value = '';
+      document.getElementById('customBangUrl').value = '';
+      document.getElementById('userBangUrlPreview').textContent = '';
+    }
+
+    function removeCustomBang(event) {
+      event.preventDefault();
+      
+      const name = event.target.getAttribute('data-name');
+      const confirmDelete = confirm(`Are you sure you want to delete the custom bang !${name}? This action cannot be undone.`);
+      
+      if (confirmDelete) {
+        const index = userBangs.findIndex(b => b.t === name);
+        
+        if (index > -1) {
+          userBangs.splice(index, 1);
+          localStorage.setItem('userBangs', JSON.stringify(userBangs));
+          populateUserBangsList();
+        }
+      }
+    }
 
     async function init() {
       const urlParams = getUrlParameters();
@@ -1229,8 +1602,12 @@
         showLandingPage();
         await loadBangs();
         populateCustomBangsList();
+        populateUserBangsList();
         initThemeToggle();
         initEngineOptions();
+        equalizeCardHeights();
+        console.log(userBangs);
+        window.addEventListener('resize', equalizeCardHeights);
       }
     }
 

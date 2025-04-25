@@ -276,6 +276,7 @@
     const textElement = document.getElementById("text5155");
     const rightLines = document.getElementById("g1018");
     const leftLines = document.getElementById("g1014");
+    const whiteConnections = document.getElementById("g1143");
     
     const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
     style.textContent = `
@@ -285,9 +286,17 @@
         opacity: 0;
         transition: transform 0.8s ease-out, opacity 0.4s ease-in;
       }
-      #g1034, #text5155, #g1018, #g1014 {
+      
+      /* Text and lines */
+      #text5155, #g1018, #g1014 {
         opacity: 0;
         transition: opacity 0.5s ease-in;
+      }
+      
+      /* White arcs and connections */
+      #g1034, #g1143 {
+        opacity: 0;
+        transition: opacity 0.4s ease-in;
       }
     `;
     document.querySelector("svg").appendChild(style);
@@ -299,9 +308,13 @@
         
         setTimeout(() => {
           if (whiteArcs) whiteArcs.style.opacity = "1";
-          if (textElement) textElement.style.opacity = "1";
-          if (rightLines) rightLines.style.opacity = "1";
-          if (leftLines) leftLines.style.opacity = "1";
+          
+          setTimeout(() => {
+            if (whiteConnections) whiteConnections.style.opacity = "1";
+            if (textElement) textElement.style.opacity = "1";
+            if (rightLines) rightLines.style.opacity = "1";
+            if (leftLines) leftLines.style.opacity = "1";
+          }, 200);
         }, 600);
       }
     }, 100);
