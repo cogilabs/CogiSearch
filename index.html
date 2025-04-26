@@ -947,7 +947,7 @@
             <!-- Will be populated dynamically -->
           </div>
 
-          <form class="user-bang-container" onsubmit="addCustomBang(event)">
+          <form class="user-bang-container" onsubmit="addUserBang(event)">
             <span class="bang-prefix" aria-hidden="true">!</span>
             <input type="text" id="customBangName" class="user-bang-input" placeholder="Your bang" aria-label="Enter user bang name">
             <span class="arrow" aria-hidden="true">→</span>
@@ -975,7 +975,6 @@
   <script>
     let bangData = [];
     let userBangs = [];
-    //localStorage.removeItem('userBangs');
     const popularEngines = [
       { t: 'g', name: 'Google' },
       { t: 'gweb', name: 'Google Web Tab' },
@@ -995,7 +994,6 @@
         const now = Date.now();
 
         if (cachedUserBangs) {
-          console.log(cachedUserBangs);
           userBangs = [...JSON.parse(cachedUserBangs)];
         }
 
@@ -1336,7 +1334,7 @@
         deleteButton.innerHTML = '&times;'; // × symbol
         deleteButton.setAttribute('data-name', bang.t);
         deleteButton.setAttribute('aria-label', `Delete custom bang !${bang.t}`);
-        deleteButton.onclick = removeCustomBang;
+        deleteButton.onclick = removeUserBang;
 
         bangItem.appendChild(shortcut);
         bangItem.appendChild(arrow);
@@ -1530,7 +1528,7 @@
       }
     }
 
-    function addCustomBang(event) {
+    function addUserBang(event) {
       event.preventDefault();
 
       let bangName = document.getElementById('customBangName').value.trim();
@@ -1545,6 +1543,11 @@
       if (bangName.startsWith("!")) {
         bangName = bangName.substring(1);
       }
+
+      if (url.includes('search.cogilabs.eu')) {
+        alert('You cannot add a custom bang for CogiSearch itself.');
+        return;
+      }
       
       const validation = validateCustomUrl(url);
       if (!validation.valid) {
@@ -1553,7 +1556,6 @@
       }
       
       const bang = { d: domain, t: bangName, s: bangName, u: url.replace("%s", "{{{s}}}") };
-      console.log(bang);
 
       if (userBangs.some(b => b.t === bangName)) {
         alert(`The bang '${bangName}' already exists.`);
@@ -1569,7 +1571,7 @@
       document.getElementById('userBangUrlPreview').textContent = '';
     }
 
-    function removeCustomBang(event) {
+    function removeUserBang(event) {
       event.preventDefault();
       
       const name = event.target.getAttribute('data-name');
@@ -1605,7 +1607,6 @@
         initThemeToggle();
         initEngineOptions();
         equalizeCardHeights();
-        console.log(userBangs);
         window.addEventListener('resize', equalizeCardHeights);
       }
     }
