@@ -1712,6 +1712,7 @@
           contentContainer.className = 'autocomplete-content';
           contentContainer.style.display = 'flex';
           contentContainer.style.flexGrow = '1';
+          contentContainer.style.alignItems = 'baseline';
           
           const shortcut = document.createElement('div');
           shortcut.className = 'bang-shortcut-ac';
@@ -1737,10 +1738,10 @@
             badgeIcon.style.opacity = '0.8';
             
             if (isCustomBang) {
-              badgeIcon.textContent = '⚙️';
+              badgeIcon.innerHTML = '<img src="Cogilabs-icon-clrs.svg" height="20" alt="" style="vertical-align: middle; width: auto;">';
               badgeIcon.title = 'CogiSearch custom bang';
             } else if (isUserBang) {
-              badgeIcon.textContent = '👤';
+              badgeIcon.textContent = '👤+';
               badgeIcon.title = 'Your custom bang';
             }
             
