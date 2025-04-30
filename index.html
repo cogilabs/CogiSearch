@@ -213,7 +213,7 @@
       margin-top: 2rem;
       margin-bottom: 5rem;
     }
-    
+
     .custom-bangs-list {
       white-space: normal;
       max-height: 300px;
@@ -257,7 +257,7 @@
         display: flex;
         flex-direction: column;
       }
-      
+
       .full-width {
         grid-column: 1 / -1;
       }
@@ -505,7 +505,7 @@
       color: #e74c3c;
       transform: scale(1.2);
     }
-    
+
     .user-bang-item {
       display: flex;
       align-items: center;
@@ -519,7 +519,7 @@
       white-space: nowrap;
       position: relative;
     }
-    
+
     .user-bang-url {
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -685,26 +685,26 @@
         margin-top: 0.75rem;
         width: 100%;
       }
-      
+
       .user-bang-container {
         flex-direction: column;
         align-items: flex-start;
         position: relative;
         padding-left: 1.5rem; /* Add padding to make room for the prefix */
       }
-      
+
       .bang-prefix {
         position: absolute;
         top: 0.75rem;
         left: 0.5rem;
       }
-      
+
       .user-bang-add-button {
         margin-left: 0;
         margin-top: 0.75rem;
         width: 100%;
       }
-      
+
       .user-bang-input, .user-bang-url-input {
         width: 100%;
         margin-bottom: 0.5rem;
@@ -719,16 +719,16 @@
       .footer-spacer {
         display: none;
       }
-      
+
       .bang-item {
         flex-direction: column;
         align-items: flex-start;
       }
-      
+
       .bang-shortcut {
         margin-bottom: 0.5rem;
       }
-      
+
       .user-bang-item {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -736,14 +736,14 @@
         max-width: 100%;
         position: relative;
       }
-      
+
       .user-bang-url {
         white-space: normal;
         word-break: break-all;
         width: 100%;
         padding-right: 30px;
       }
-      
+
       .user-bang-delete-button {
         position: absolute;
         top: 0.5rem;
@@ -752,7 +752,7 @@
         border: none;
         background: none;
       }
-      
+
       .arrow {
         display: none;
       }
@@ -854,7 +854,7 @@
         <h2 class="card-title" id="about-title">
           <span class="icon" aria-hidden="true">ℹ️</span> About CogiSearch
         </h2>
-        <p>CogiSearch is a search router inspired by <a href="https://duckduckgo.com/bang/" target="_blank">DuckDuckGo's bang feature</a>. It's faster and lets you set your preferred default search engine.</p>
+        <p>CogiSearch is a search router inspired by <a href="https://duckduckgo.com/bang/" target="_blank">DuckDuckGo's bang feature</a>. It's faster, lets you set your preferred default search engine, and even lets you add your own custom bangs!</p>
         <p>To use a bang, simply type <span class="emphase">!&lt;bang&gt;</span> in your search query. For example, search on Google with <span class="emphase">!g</span>.</p>
         <p>All DuckDuckGo bangs are available, plus custom ones specifically added for CogiSearch.</p>
         <p>You can also add your own user bangs, see the <a href="#user-banglist-title">User Bangs</a> section below.</p>
@@ -1184,11 +1184,11 @@
       for (const bang of bangData) {
         bangMap.set(bang.t, bang);
       }
-      
+
       for (const bang of customBangs) {
         bangMap.set(bang.t, bang);
       }
-      
+
       for (const bang of userBangs) {
         bangMap.set(bang.t, bang);
       }
@@ -1198,7 +1198,7 @@
         if (token.startsWith('!')) {
           const bangName = token.substring(1);
           const bang = bangMap.get(bangName);
-          
+
           if (bang) {
             tokens.splice(i, 1);
             const cleanQuery = tokens.join(' ').trim();
@@ -1206,6 +1206,9 @@
 
             if (!cleanQuery) {
               try {
+                const bangUrl = bang.u.startsWith('/') ? 
+                `https://duckduckgo.com${bang.u}` : bang.u;
+
                 const searchUrl = new URL(bang.u.replace('{{{s}}}', ''));
 
                 if (searchUrl.search || bang.u.includes('search') || bang.u.includes('query')) {
@@ -1232,6 +1235,10 @@
               }
             }
 
+            if (bang.u.startsWith('/')) {
+              return `https://duckduckgo.com${bang.u.replace('{{{s}}}', bangEncodedQuery)}`;
+            }
+        
             return bang.u.replace('{{{s}}}', bangEncodedQuery);
           }
         }
@@ -1305,7 +1312,7 @@
     function populateUserBangsList() {
       const listContainer = document.querySelector('.user-bangs-list');
       if (!listContainer) return;
-      
+
       listContainer.innerHTML = '';
 
       userBangs.sort((a, b) => a.s.localeCompare(b.s));
@@ -1326,9 +1333,9 @@
         arrow.textContent = '→';
 
         const name = document.createElement('span');
-        name.className = 'user-bang-url'; 
+        name.className = 'user-bang-url';
         name.innerHTML = bang.u.replace("{{{s}}}", "<strong>cat%20videos</strong>");
-        
+
         const deleteButton = document.createElement('button');
         deleteButton.className = 'user-bang-delete-button';
         deleteButton.innerHTML = '&times;'; // × symbol
@@ -1471,37 +1478,37 @@
         }
       });
     }
-    
+
     function equalizeCardHeights() {
       if (window.innerWidth >= 768) {  // Only equalize on desktop
         const settingsCard = document.querySelector('.settings-container');
         const aboutCard = document.querySelector('.about-container');
         const bangsList = document.querySelector('.custom-bangs-list');
-        
+
         if (!settingsCard || !aboutCard || !bangsList) return;
 
         aboutCard.style.height = 'auto';
         settingsCard.style.height = 'auto';
         bangsList.style.maxHeight = 'none';
-        
+
         const settingsHeight = settingsCard.offsetHeight;
-        
+
         let aboutContentHeight = 0;
         for (const child of aboutCard.children) {
           if (child !== bangsList) {
             aboutContentHeight += child.offsetHeight;
           }
         }
-        
+
         const bangsMaxHeight = settingsHeight - aboutContentHeight - 30;
-        
+
         bangsList.style.maxHeight = `${bangsMaxHeight > 100 ? bangsMaxHeight : 100}px`;
 
         aboutCard.style.height = `${settingsHeight}px`;
       } else {
         const aboutCard = document.querySelector('.about-container');
         const bangsList = document.querySelector('.custom-bangs-list');
-        
+
         if (aboutCard) aboutCard.style.height = 'auto';
         if (bangsList) bangsList.style.maxHeight = '300px';
       }
@@ -1510,11 +1517,11 @@
     function previewUserBangUrl() {
       const urlInput = document.getElementById('customBangUrl').value.trim();
       const previewEl = document.getElementById('userBangUrlPreview');
-      
+
       if (!previewEl) return;
-      
+
       const validation = validateCustomUrl(urlInput);
-      
+
       if (validation.valid) {
         const exampleQuery = "cat videos";
         const exampleUrl = urlInput.replace('%s', encodeURIComponent(exampleQuery));
@@ -1534,7 +1541,7 @@
       let bangName = document.getElementById('customBangName').value.trim();
       const url = document.getElementById('customBangUrl').value.trim();
       const domain = url.split('/')[2];
-      
+
       if (!bangName) {
         alert('Please enter a bang name');
         return;
@@ -1548,13 +1555,13 @@
         alert('You cannot add a custom bang for CogiSearch itself.');
         return;
       }
-      
+
       const validation = validateCustomUrl(url);
       if (!validation.valid) {
         alert(validation.message);
         return;
       }
-      
+
       const bang = { d: domain, t: bangName, s: bangName, u: url.replace("%s", "{{{s}}}") };
 
       if (userBangs.some(b => b.t === bangName)) {
@@ -1573,13 +1580,13 @@
 
     function removeUserBang(event) {
       event.preventDefault();
-      
+
       const name = event.target.getAttribute('data-name');
       const confirmDelete = confirm(`Are you sure you want to delete the custom bang !${name}? This action cannot be undone.`);
-      
+
       if (confirmDelete) {
         const index = userBangs.findIndex(b => b.t === name);
-        
+
         if (index > -1) {
           userBangs.splice(index, 1);
           localStorage.setItem('userBangs', JSON.stringify(userBangs));
