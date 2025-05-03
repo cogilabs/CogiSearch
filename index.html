@@ -758,7 +758,7 @@
         flex-direction: column;
         align-items: flex-start;
         position: relative;
-        padding-left: 1.5rem; /* Add padding to make room for the prefix */
+        padding-left: 1.5rem;
       }
 
       .bang-prefix {
@@ -899,6 +899,28 @@
       color: #e74c3c;
     }
   </style>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="CogiSearch">
+  <meta name="description" content="A fast, customizable bang-powered search router by Cogilabs.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://search.cogilabs.eu/">
+  <meta property="og:title" content="CogiSearch">
+  <meta property="og:description" content="A fast, customizable bang-powered search router by Cogilabs.">
+  <meta property="og:image" content="CogiEmbed.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://search.cogilabs.eu/">
+  <meta property="twitter:title" content="CogiSearch">
+  <meta property="twitter:description" content="A fast, customizable bang-powered search router by Cogilabs.">
+  <meta property="twitter:image" content="CogiEmbed.png">
+
+  <!-- Discord -->
+  <meta name="theme-color" content="#4361ee">
+
 </head>
 <body>
   <div class="landing-page" role="main">
@@ -1799,11 +1821,7 @@
           
           if (e.key === 'ArrowDown') {
             e.preventDefault();
-            // if (selectedIndex == -1) {
-            //   selectedIndex = 1;
-            // } else {
-               selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
-            // }
+            selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
             updateSelection(items);
           } else if (e.key === 'ArrowUp') {
             e.preventDefault();
