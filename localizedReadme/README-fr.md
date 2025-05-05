@@ -117,7 +117,12 @@ Pour ajouter CogiSearch comme moteur de recherche dans votre navigateur :
 1. Copiez cette URL : `https://search.cogilabs.eu/?q=%s`
 2. Dans les paramètres de moteur de recherche de votre navigateur :
   - **Chrome** : Paramètres → Moteur de recherche → Gérer les moteurs de recherche → Ajouter
-  - **Firefox** : Paramètres → Recherche → Ajouter un moteur de recherche → Autre
+  - **Firefox** : 
+    1. Tapez `about:config` dans la barre d'adresse et acceptez l'avertissement
+    2. Recherchez `browser.urlbar.update2.engineAliasRefresh`
+    3. Si cette option n'existe pas, sélectionnez "Booléen" et cliquez sur le bouton "+" pour la créer
+    4. Définissez-la sur `true` (si ce n'est pas déjà le cas)
+    5. Allez dans Paramètres → Recherche → Ajouter un moteur de recherche → Autre
   - **Edge** : Paramètres → Confidentialité, recherche et services → Barre d'adresse et recherche → Gérer les moteurs de recherche → Ajouter
 3. Nommez-le "CogiSearch" et collez l'URL
 4. Définissez-le comme moteur de recherche par défaut (optionnel)
