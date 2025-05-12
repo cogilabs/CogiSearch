@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CogiSearch</title>
-  <link rel="shortcut icon" href="https://Cogilabs.eu/Images/Cogilabs-favicon.svg">
+  <link rel="shortcut icon" href="/CogiSearch-favicon.ico">
   <script src="customBangs.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -136,7 +136,7 @@
       overflow: visible;
       transition: all 0.3s ease;
     }
-    
+
     .autocomplete-dropdown {
       position: absolute;
       top: 100%;
@@ -152,7 +152,7 @@
       display: none;
       margin-top: 5px;
     }
-    
+
     .autocomplete-item {
       padding: 10px 15px;
       cursor: pointer;
@@ -161,20 +161,20 @@
       border-bottom: 1px solid var(--border-color);
       transition: background-color 0.2s ease;
     }
-    
+
     .autocomplete-item:last-child {
       border-bottom: none;
     }
-    
+
     .autocomplete-item:hover {
       background-color: var(--autocomp-hover-background);
     }
-    
+
     .autocomplete-item.selected {
       background-color: var(--accent-color);
       color: var(--button-text-color);
     }
-    
+
     .bang-shortcut-ac {
       font-weight: bold;
       background-color: var(--autocomp-hover-background);
@@ -195,7 +195,7 @@
       background-color: rgba(255, 255, 255, 0.2);
       color: var(--button-text-color);
     }
-    
+
     .bang-name-ac {
       font-size: 0.9rem;
       white-space: nowrap;
@@ -899,7 +899,7 @@
       color: #e74c3c;
     }
   </style>
-  
+
   <!-- Primary Meta Tags -->
   <meta name="title" content="CogiSearch">
   <meta name="description" content="A fast, customizable bang-powered search router by Cogilabs.">
@@ -909,14 +909,14 @@
   <meta property="og:url" content="https://search.cogilabs.eu/">
   <meta property="og:title" content="CogiSearch">
   <meta property="og:description" content="A fast, customizable bang-powered search router by Cogilabs.">
-  <meta property="og:image" content="/CogiEmbed.png">
+  <meta property="og:image" content="/CogiSearchEmbed.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://search.cogilabs.eu/">
   <meta property="twitter:title" content="CogiSearch">
   <meta property="twitter:description" content="A fast, customizable bang-powered search router by Cogilabs.">
-  <meta property="twitter:image" content="/CogiEmbed.png">
+  <meta property="twitter:image" content="/CogiSearchEmbed.png">
 
   <!-- Discord -->
   <meta name="theme-color" content="#4361ee">
@@ -1053,7 +1053,8 @@
     <footer class="footer" role="contentinfo">
       <div class="footer-spacer"></div>
       <div class="footer-content">
-        <p>Powered by <a href="https://Cogilabs.eu/" aria-label="Visit Cogilabs website">Cogilabs.eu</a></p>
+        <p>Powered by <a href="https://Cogilabs.eu/" aria-label="Visit Cogilabs website">Cogilabs.eu</a> |
+        <a href="privacy-policy.html" aria-label="Privacy Policy">Privacy Policy</a></p>
       </div>
       <a href="https://Cogilabs.eu/" aria-label="Cogilabs homepage">
         <img src="https://cogilabs.eu/Images/Cogilabs-long-contour-wh-notxt.svg" alt="Cogilabs Logo" class="footer-logo">
@@ -1297,7 +1298,7 @@
 
             if (!cleanQuery) {
               try {
-                const bangUrl = bang.u.startsWith('/') ? 
+                const bangUrl = bang.u.startsWith('/') ?
                 `https://duckduckgo.com${bang.u}` : bang.u;
 
                 const searchUrl = new URL(bang.u.replace('{{{s}}}', ''));
@@ -1329,7 +1330,7 @@
             if (bang.u.startsWith('/')) {
               return `https://duckduckgo.com${bang.u.replace('{{{s}}}', bangEncodedQuery)}`;
             }
-        
+
             return bang.u.replace('{{{s}}}', bangEncodedQuery);
           }
         }
@@ -1691,19 +1692,19 @@
       const dropdown = document.getElementById('autocompleteDropdown');
       let selectedIndex = -1;
       let filteredBangs = [];
-      
+
       function showAutocomplete(query) {
         dropdown.innerHTML = '';
         dropdown.style.display = 'block';
-        
+
         const allBangs = [...bangData, ...userBangs];
-        
+
         if (query === '') {
           const topDdgBangs = bangData
             .filter(bang => bang.r)
             .sort((a, b) => b.r - a.r)
             .slice(0, 5);
-            
+
           filteredBangs = [...topDdgBangs, ...userBangs].slice(0, 10);
         } else {
           filteredBangs = allBangs
@@ -1712,53 +1713,53 @@
               if (!a.r && !b.r) return 0;
               if (!a.r) return 1;
               if (!b.r) return -1;
-              
+
               return b.r - a.r;
             })
             .slice(0, 10);
         }
-        
+
         if (filteredBangs.length === 0) {
           dropdown.style.display = 'none';
           return;
         }
-        
+
         filteredBangs.forEach((bang, index) => {
           const item = document.createElement('div');
           item.className = 'autocomplete-item';
           if (index === 0) item.classList.add('selected');
           item.setAttribute('role', 'option');
           item.setAttribute('tabindex', '0');
-          
+
           const contentContainer = document.createElement('div');
           contentContainer.className = 'autocomplete-content';
           contentContainer.style.display = 'flex';
           contentContainer.style.flexGrow = '1';
           contentContainer.style.alignItems = 'baseline';
-          
+
           const shortcut = document.createElement('div');
           shortcut.className = 'bang-shortcut-ac';
           shortcut.textContent = `!${bang.t}`;
-          
+
           const name = document.createElement('div');
           name.className = 'bang-name-ac';
           name.textContent = bang.s || bang.t;
-          
+
           contentContainer.appendChild(shortcut);
           contentContainer.appendChild(name);
-          
+
           item.appendChild(contentContainer);
-          
+
           const isCustomBang = customBangs.some(b => b.t === bang.t);
           const isUserBang = userBangs.some(b => b.t === bang.t);
-          
+
           if (isCustomBang || isUserBang) {
             const badgeIcon = document.createElement('span');
             badgeIcon.className = 'bang-badge';
             badgeIcon.style.marginLeft = 'auto';
             badgeIcon.style.fontSize = '1rem';
             badgeIcon.style.opacity = '0.8';
-            
+
             if (isCustomBang) {
               badgeIcon.innerHTML = '<img src="Cogilabs-icon-clrs.svg" height="20" alt="" style="vertical-align: middle; width: auto;">';
               badgeIcon.title = 'CogiSearch custom bang';
@@ -1766,45 +1767,45 @@
               badgeIcon.textContent = '👤+';
               badgeIcon.title = 'Your custom bang';
             }
-            
+
             item.appendChild(badgeIcon);
           }
-          
+
           item.addEventListener('click', () => {
             selectBang(bang.t);
           });
-          
+
           item.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
               selectBang(bang.t);
             }
           });
-          
+
           dropdown.appendChild(item);
         });
-        
+
         selectedIndex = 0;
       }
-      
+
       function selectBang(bangName) {
         const currentValue = searchInput.value;
         const bangStart = currentValue.lastIndexOf('!');
-        
+
         if (bangStart >= 0) {
-          const newValue = currentValue.substring(0, bangStart) + 
+          const newValue = currentValue.substring(0, bangStart) +
                           '!' + bangName + ' ';
           searchInput.value = newValue;
           searchInput.focus();
         }
-        
+
         dropdown.style.display = 'none';
         selectedIndex = -1;
       }
-      
+
       searchInput.addEventListener('input', () => {
         const value = searchInput.value;
         const lastBangIndex = value.lastIndexOf('!');
-        
+
         if (lastBangIndex >= 0 && lastBangIndex === value.length - 1) {
           showAutocomplete('');
         } else if (lastBangIndex >= 0 && !value.substring(lastBangIndex).includes(' ')) {
@@ -1814,11 +1815,11 @@
           dropdown.style.display = 'none';
         }
       });
-      
+
       searchInput.addEventListener('keydown', (e) => {
         if (dropdown.style.display === 'block') {
           const items = dropdown.querySelectorAll('.autocomplete-item');
-          
+
           if (e.key === 'ArrowDown') {
             e.preventDefault();
             selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
@@ -1840,7 +1841,7 @@
           }
         }
       });
-      
+
       function updateSelection(items) {
         items.forEach((item, index) => {
           if (index === selectedIndex) {
@@ -1851,7 +1852,7 @@
           }
         });
       }
-      
+
       document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target) && e.target !== searchInput) {
           dropdown.style.display = 'none';
