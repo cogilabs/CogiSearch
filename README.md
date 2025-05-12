@@ -117,9 +117,9 @@ To add CogiSearch as a search engine in your browser:
 1. Copy this URL: `https://search.cogilabs.eu/?q=%s`
 2. In your browser's search engine settings:
   - **Chrome**: Settings → Search Engine → Manage Search Engines → Add
-  - **Firefox**: Settings → Search → Add Search Engine → Other
+  - **Firefox**: Mozilla has removed the ability to add a custom search engine through the settings, so install the [CogiSearch Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/cogisearch/)
   - **Edge**: Settings → Privacy, Search and Services → Address Bar and Search → Manage Search Engines → Add
-3. Name it "CogiSearch" and paste the URL
+3. Name it "CogiSearch" and paste the URL (for Chrome and Edge)
 4. Set it as your default search engine (optional)
 
 ## Self-Hosting
