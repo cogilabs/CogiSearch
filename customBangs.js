@@ -43,5 +43,14 @@ const customBangs = [
     "sc": "Blogs",
     "t": "cogilabs",
     "u": "https://www.google.com/search?udm=14&q=site%3Acogilabs.eu%20{{{s}}}"
+  },
+  {
+    "c": "Tech",
+    "d": "chatgpt.com",
+    "r": 50000,
+    "s": "ChatGPT",
+    "sc": "Tools",
+    "t": "chatgpt",
+    "u": "https://chatgpt.com/?q={{{s}}}"
   }
 ];

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CogiSearch Extension Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Light theme (default) */
+      --background-color: #f8f9fa;
+      --card-background: #ffffff;
+      --text-color: #212529;
+      --secondary-text-color: #6c757d;
+      --accent-color: #4361ee;
+      --accent-hover: #3a56d4;
+      --border-color: #e9ecef;
+      --footer-background: #212529;
+      --footer-text-color: #f8f9fa;
+      --footer-link-color: #4361ee;
+      --footer-link-hover: #90a5ff;
+      --section-divider: #e9ecef;
+    }
+
+    [data-theme="dark"] {
+      --background-color: #121212;
+      --card-background: #1e1e1e;
+      --text-color: #e0e0e0;
+      --secondary-text-color: #aaaaaa;
+      --accent-color: #738aff;
+      --accent-hover: #90a5ff;
+      --border-color: #333333;
+      --footer-background: #000000;
+      --footer-text-color: #e0e0e0;
+      --footer-link-color: #738aff;
+      --footer-link-hover: #90a5ff;
+      --section-divider: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .logo-container {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container object {
+      max-width: 250px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: contain;
+    }
+
+    h1, h2, h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    h3 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      border-bottom: 1px solid var(--accent-hover);
+    }
+
+    .footer {
+      background-color: var(--footer-background);
+      color: var(--footer-text-color);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .footer-content {
+      flex: 1;
+      text-align: center;
+    }
+
+    .footer-spacer {
+      width: 80px;
+    }
+
+    .footer-logo {
+      height: 30px;
+      max-width: 120px;
+      object-fit: contain;
+    }
+
+    .footer a {
+      color: var(--footer-text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: var(--footer-link-hover);
+    }
+
+    .effective-date {
+      font-style: italic;
+      color: var(--secondary-text-color);
+      margin-top: 3rem;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+      
+      .footer {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .footer-spacer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <object type="image/svg+xml" data="cogiSearch.svg" class="logo" title="CogiSearch Logo">
+        <p>CogiSearch</p>
+      </object>
+    </div>
+
+    <h1>CogiSearch Extension Privacy Policy</h1>
+
+    <h2>Introduction</h2>
+    <p>This Privacy Policy explains how the CogiSearch Extension ("we", "our", or "the extension") collects, uses, and protects information when you use our browser extension. We are committed to protecting your privacy and ensuring transparency about how your data is handled.</p>
+
+    <h2>Information Collection and Usage</h2>
+    
+    <h3>Data We Collect</h3>
+    <p>The CogiSearch Extension collects the following information:</p>
+    <ul>
+      <li><strong>Custom Bangs</strong>: The extension stores and synchronizes your custom search shortcuts (known as "bangs") between your devices.</li>
+      <li><strong>Storage Access</strong>: The extension accesses localStorage on the CogiSearch website to integrate with the site's functionality.</li>
+    </ul>
+
+    <h3>How We Use Your Data</h3>
+    <p>The data we collect is used solely for the following purposes:</p>
+    <ul>
+      <li><strong>Synchronization</strong>: To synchronize your custom bangs across different browsers and devices using your browser's built-in sync functionality.</li>
+      <li><strong>Functionality</strong>: To provide the core features of the extension, including custom bang support and search functionality.</li>
+    </ul>
+
+    <h2>Data Storage and Security</h2>
+    
+    <h3>Where Data is Stored</h3>
+    <p>All data collected by the extension is stored:</p>
+    <ul>
+      <li><strong>On Your Device</strong>: Using the browser's storage API (browser.storage.sync and browser.storage.local).</li>
+      <li><strong>In Browser Sync</strong>: If you have browser synchronization enabled, your custom bangs will be synced across your devices using your browser's built-in sync functionality.</li>
+    </ul>
+
+    <h3>Data Security</h3>
+    <p>We implement appropriate security measures to protect your data:</p>
+    <ul>
+      <li><strong>No External Servers</strong>: The extension does not transmit your data to any external servers we operate.</li>
+      <li><strong>Browser Security</strong>: We rely on your browser's built-in security mechanisms for syncing data between your devices.</li>
+    </ul>
+
+    <h2>Data Sharing and Disclosure</h2>
+    <p>The CogiSearch Extension does not share your data with third parties. Your custom bangs and settings are only stored locally on your devices and synchronized via your browser's built-in sync functionality.</p>
+
+    <h2>User Rights</h2>
+    <p>You have the following rights regarding your data:</p>
+    <ul>
+      <li><strong>Access and Control</strong>: You can view and manage your stored bangs directly through the CogiSearch website.</li>
+      <li><strong>Deletion</strong>: You can delete your custom bangs at any time through the CogiSearch website interface.</li>
+      <li><strong>Export/Import</strong>: You can export and import your bangs through the CogiSearch website.</li>
+    </ul>
+
+    <h2>Changes to the Extension and Data Usage</h2>
+    <p>If we make significant changes to how the extension functions or how your data is used, we will update this privacy policy accordingly and provide a notification through the extension or the update process.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>The extension integrates with the <a href="https://search.cogilabs.eu/">CogiSearch website</a>. Please refer to the <a href="privacy-policy.html">CogiSearch website's privacy policy</a> for information about how the website handles your data.</p>
+
+    <h2>Contact Information</h2>
+    <p>If you have any questions or concerns about this privacy policy or the CogiSearch Extension, please contact us at:</p>
+    <p><a href="mailto:contact@cogilabs.eu">contact@cogilabs.eu</a></p>
+
+    <h2>Updates to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. The latest version will always be available on this page and in the extension's documentation.</p>
+
+    <p class="effective-date">This Privacy Policy was last updated on May 12, 2025.</p>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-spacer"></div>
+    <div class="footer-content">
+      <p>Powered by <a href="https://Cogilabs.eu/" aria-label="Visit Cogilabs website">Cogilabs.eu</a></p>
+    </div>
+    <a href="https://Cogilabs.eu/" aria-label="Cogilabs homepage">
+      <img src="https://cogilabs.eu/Images/Cogilabs-long-contour-wh-notxt.svg" alt="Cogilabs Logo" class="footer-logo">
+    </a>
+  </footer>
+
+  <script>
+    // Theme detection and application
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    initTheme();
+  </script>
+</body>
+</html>

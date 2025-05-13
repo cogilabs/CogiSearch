@@ -190,6 +190,17 @@ Cela permet d'utiliser **n'importe quel moteur de recherche** prenant en charge 
 
 CogiSearch est sous licence MIT. Voir [LICENSE](/LICENSE) pour plus d'informations.
 
+## Politique de Confidentialité
+
+CogiSearch respecte votre vie privée et ne suit ni ne stocke vos recherches :
+
+- **Aucune Collecte de Données** : Nous ne stockons ni vos requêtes de recherche ni votre historique de navigation
+- **Pas de Cookies** : Nous n'utilisons pas de cookies de suivi
+- **Stockage Local Uniquement** : Toutes les préférences sont stockées localement sur votre appareil
+- **Pas d'Analytique** : Nous n'utilisons aucun service d'analyse tiers
+
+Pour des détails complets, veuillez consulter notre [Politique de Confidentialité](/privacy-policy.html) (seulement en anglais).
+
 ---
 
 <p align="center">Propulsé par <a href="https://Cogilabs.eu/">Cogilabs.eu</a></p>

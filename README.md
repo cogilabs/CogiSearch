@@ -190,6 +190,17 @@ This allows you to use **any search engine** that supports direct query URLs!
 
 CogiSearch is licensed under the MIT License. See [LICENSE](/LICENSE) for more information.
 
+## Privacy Policy
+
+CogiSearch respects your privacy and doesn't track or store your searches:
+
+- **No Data Collection**: We don't store your search queries or browsing history
+- **No Cookies**: We don't use tracking cookies
+- **Local Storage Only**: All preferences are stored locally on your device 
+- **No Analytics**: We don't use any third-party analytics services
+
+For complete details, please see our [Privacy Policy](/privacy-policy.html).
+
 ---
 
 <p align="center">Powered by <a href="https://Cogilabs.eu/">Cogilabs.eu</a></p>
