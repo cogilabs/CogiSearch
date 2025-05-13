@@ -20,6 +20,7 @@
 
 - [Introduction](#introduction)
 - [Fonctionnalités](#fonctionnalités)
+- [Extensions pour navigateur](#extensions-pour-navigateur)
 - [Utilisation](#utilisation)
 - [Auto-hébergement](#auto-hébergement)
 - [Personnalisation](#personnalisation)
@@ -40,6 +41,25 @@ Un "bang" est un raccourci spécial qui redirige votre recherche vers un moteur 
 - 🌓 **Thème clair/sombre** : Basculez entre les modes clair et sombre
 - 📋 **Intégration facile** : Ajoutez CogiSearch à n'importe quel navigateur avec une simple URL
 - 💾 **Aucun suivi** : Vos recherches ne sont ni stockées ni suivies
+
+## Extensions pour navigateur
+
+Pour une expérience optimale, installez l’**extension CogiSearch** pour votre navigateur.  
+Elle configure automatiquement CogiSearch comme moteur de recherche par défaut et synchronise vos bangs personnalisés entre vos appareils.
+
+### Fonctionnalités activées par l’extension :
+- Configuration en un clic comme moteur par défaut
+- Synchronisation de vos **bangs personnalisés** sur Firefox, Chrome et navigateurs compatibles
+- Aucun suivi ni serveur externe — tout est stocké via la synchronisation du navigateur
+
+### Firefox
+[→ Disponible sur les modules complémentaires Firefox](https://addons.mozilla.org/fr/firefox/addon/cogisearch/)
+
+### Chrome (en cours de validation)
+Bientôt disponible sur le [Chrome Web Store](https://chrome.google.com/webstore/)  
+
+> ℹ️ L’extension est **facultative** — vous pouvez toujours utiliser CogiSearch manuellement.  
+Mais elle facilite l’installation et ajoute la synchronisation.
 
 ## Utilisation
 

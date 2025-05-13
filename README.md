@@ -20,6 +20,7 @@
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Browser Extensions](#browser-extensions)
 - [Usage](#usage)
 - [Self-Hosting](#self-hosting)
 - [Customizing](#customizing)
@@ -40,6 +41,25 @@ A "bang" is a special shortcut that redirects your search to a specific search e
 - 🌓 **Light/Dark Theme**: Toggle between light and dark mode for comfortable browsing
 - 📋 **Easy Integration**: Add CogiSearch to any browser with a simple URL
 - 💾 **No Tracking**: Your searches aren't stored or tracked
+
+## Browser Extensions
+
+For the best experience, install the **CogiSearch browser extension**.  
+It automatically sets CogiSearch as your default search engine and syncs your custom bangs across devices.
+
+### Features unlocked by the extension:
+- One-click setup as your default search engine
+- Sync your **custom bangs** across Firefox, Chrome, and compatible browsers
+- No tracking or external servers involved — everything is stored securely via browser sync
+
+### Firefox
+[→ Get it on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/cogisearch/)
+
+### Chrome (under review)
+Coming soon on the [Chrome Web Store](https://chrome.google.com/webstore/)  
+
+> ℹ️ The extension is **optional** — you can still use CogiSearch in your browser manually.  
+But the extension brings syncing and simpler setup.
 
 ## Usage
 
