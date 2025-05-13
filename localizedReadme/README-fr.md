@@ -25,6 +25,7 @@
 - [Auto-hébergement](#auto-hébergement)
 - [Personnalisation](#personnalisation)
 - [Licence](#licence)
+- [Politique de Confidentialité](#politique-de-confidentialité)
 
 ## Introduction
 

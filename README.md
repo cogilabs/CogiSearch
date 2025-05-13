@@ -25,6 +25,7 @@
 - [Self-Hosting](#self-hosting)
 - [Customizing](#customizing)
 - [License](#license)
+- [Privacy Policy](#privacy-policy)
 
 ## Introduction
 
