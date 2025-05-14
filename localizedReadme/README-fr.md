@@ -54,10 +54,10 @@ Elle configure automatiquement CogiSearch comme moteur de recherche par défaut 
 - Aucun suivi ni serveur externe — tout est stocké via la synchronisation du navigateur
 
 ### Firefox
-[→ Disponible sur les modules complémentaires Firefox](https://addons.mozilla.org/fr/firefox/addon/cogisearch/)
+[→ Disponible sur Firefox Add-ons](https://addons.mozilla.org/fr/firefox/addon/cogisearch/)
 
-### Chrome (en cours de validation)
-Bientôt disponible sur le [Chrome Web Store](https://chrome.google.com/webstore/)  
+### Chrome
+[→ Disponible sur le Chrome Web Store](https://chromewebstore.google.com/detail/cogisearch/hnlkeooopnkhndcaafmdolkkgjkdnmfe)  
 
 > ℹ️ L’extension est **facultative** — vous pouvez toujours utiliser CogiSearch manuellement.  
 Mais elle facilite l’installation et ajoute la synchronisation.

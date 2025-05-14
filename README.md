@@ -56,8 +56,8 @@ It automatically sets CogiSearch as your default search engine and syncs your cu
 ### Firefox
 [→ Get it on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/cogisearch/)
 
-### Chrome (under review)
-Coming soon on the [Chrome Web Store](https://chrome.google.com/webstore/)  
+### Chrome
+[→ Get it on the Chrome Web Store](https://chromewebstore.google.com/detail/cogisearch/hnlkeooopnkhndcaafmdolkkgjkdnmfe)  
 
 > ℹ️ The extension is **optional** — you can still use CogiSearch in your browser manually.  
 But the extension brings syncing and simpler setup.
