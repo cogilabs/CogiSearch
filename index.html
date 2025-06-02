@@ -1296,6 +1296,10 @@
             const cleanQuery = tokens.join(' ').trim();
             const bangEncodedQuery = encodeURIComponent(cleanQuery);
 
+            if (bangName == "tr") {
+              bang.u = `https://translate.google.com/?sl=auto&tl=en&text={{{s}}}&op=translate`;
+            }
+
             if (!cleanQuery) {
               try {
                 const bangUrl = bang.u.startsWith('/') ?
@@ -1305,9 +1309,11 @@
 
                 if (searchUrl.search || bang.u.includes('search') || bang.u.includes('query')) {
                   const pathParts = searchUrl.pathname.split('/');
-                  if (pathParts.length > 1 &&
-                     (pathParts[pathParts.length-1].includes('search') ||
-                      pathParts[pathParts.length-1].includes('results'))) {
+                  if (
+                    pathParts.length > 1 &&
+                    (pathParts[pathParts.length-1].includes('search') ||
+                    pathParts[pathParts.length-1].includes('results'))
+                  ) {
                     pathParts.pop();
                   }
 
