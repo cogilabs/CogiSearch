@@ -52,5 +52,14 @@ const customBangs = [
     "sc": "Tools",
     "t": "chatgpt",
     "u": "https://chatgpt.com/?q={{{s}}}"
+  },
+  {
+    "c":"Online Services",
+    "d":"pastebin.com",
+    "r":80,
+    "s":"Pastebin ID",
+    "sc":"Tools",
+    "t":"pbin",
+    "u":"https://pastebin.com/{{{s}}}"
   }
 ];
